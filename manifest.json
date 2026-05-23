@@ -1,0 +1,60 @@
+{
+  "plugins": [
+    {
+      "manifest": {
+        "plugin_id": "silo.tmdb",
+        "version": "1.2.9",
+        "silo_api_version": "v1",
+        "capabilities": [
+          {
+            "type": "metadata_provider.v1",
+            "id": "tmdb",
+            "display_name": "TMDB",
+            "description": "The Movie Database — metadata for movies and TV series."
+          }
+        ]
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-tmdb",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
+        "plugin_id": "silo.tvdb",
+        "version": "1.2.10",
+        "silo_api_version": "v1",
+        "capabilities": [
+          {
+            "type": "metadata_provider.v1",
+            "id": "tvdb",
+            "display_name": "TVDB",
+            "description": "TheTVDB — metadata for TV series."
+          }
+        ]
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-tvdb",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.10/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.10/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.10/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.10/plugin-linux-arm64"
+        }
+      }
+    }
+  ]
+}
