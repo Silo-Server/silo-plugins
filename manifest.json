@@ -3,7 +3,7 @@
     {
       "manifest": {
         "plugin_id": "silo.tmdb",
-        "version": "1.2.9",
+        "version": "1.2.16",
         "silo_api_version": "v1",
         "capabilities": [
           {
@@ -15,16 +15,16 @@
         ]
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-tmdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.16/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.16/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.16/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.9/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tmdb/releases/download/v1.2.16/plugin-linux-arm64"
         }
       }
     },
