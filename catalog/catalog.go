@@ -76,9 +76,6 @@ func BuildPackageFromRelease(repo string, source SourceManifest, release Release
 	if version == "" {
 		return CatalogPackage{}, fmt.Errorf("release tag_name is required")
 	}
-	if source.Version != version {
-		return CatalogPackage{}, fmt.Errorf("source manifest version %q does not match release tag %q", source.Version, release.TagName)
-	}
 
 	checksumsURL := ""
 	binaries := map[string]PlatformBinary{}
@@ -118,7 +115,7 @@ func BuildPackageFromRelease(repo string, source SourceManifest, release Release
 	return CatalogPackage{
 		Manifest: CatalogManifest{
 			PluginID:       source.PluginID,
-			Version:        source.Version,
+			Version:        version,
 			SiloAPIVersion: source.SiloAPIVersion,
 			Capabilities:   capabilities,
 		},

@@ -1,7 +1,6 @@
 package catalog
 
 import (
-	"strings"
 	"testing"
 )
 
@@ -52,7 +51,7 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 	}
 }
 
-func TestBuildPackageFromRelease_RequiresMatchingVersion(t *testing.T) {
+func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 	source := SourceManifest{
 		PluginID:       "silo.tmdb",
 		Version:        "1.2.2",
@@ -61,11 +60,20 @@ func TestBuildPackageFromRelease_RequiresMatchingVersion(t *testing.T) {
 			{Type: "metadata_provider.v1", ID: "tmdb"},
 		},
 	}
-	release := Release{TagName: "v1.2.3"}
+	release := Release{
+		TagName: "v1.2.3",
+		Assets: []Asset{
+			{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/tmdb/plugin-linux-amd64"},
+			{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/tmdb/checksums.txt"},
+		},
+	}
 
-	_, err := BuildPackageFromRelease("Silo-Server/silo-plugin-tmdb", source, release)
-	if err == nil || !strings.Contains(err.Error(), "does not match release tag") {
-		t.Fatalf("expected version mismatch error, got %v", err)
+	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-tmdb", source, release)
+	if err != nil {
+		t.Fatalf("BuildPackageFromRelease() error = %v", err)
+	}
+	if pkg.Manifest.Version != "1.2.3" {
+		t.Fatalf("Version = %q, want %q (tag should override manifest)", pkg.Manifest.Version, "1.2.3")
 	}
 }
 
