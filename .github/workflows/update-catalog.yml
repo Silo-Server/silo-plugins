@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.CATALOG_PUSH_TOKEN }}
 
       - uses: actions/setup-go@v6
         with:
