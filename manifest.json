@@ -2,6 +2,34 @@
   "plugins": [
     {
       "manifest": {
+        "plugin_id": "silo.audiobook-metadata",
+        "version": "0.1.0",
+        "silo_api_version": "v1",
+        "capabilities": [
+          {
+            "type": "metadata_provider.v1",
+            "id": "audiobook-metadata",
+            "display_name": "Audiobook Metadata",
+            "description": "Metadata provider for audiobook items. Wraps Audnexus, AudiMeta, iTunes, Audible, and Storytel."
+          }
+        ]
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.tmdb",
         "version": "1.2.16",
         "silo_api_version": "v1",
