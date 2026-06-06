@@ -58,6 +58,34 @@
     },
     {
       "manifest": {
+        "plugin_id": "silo.theintrodb",
+        "version": "0.1.0",
+        "silo_api_version": "v1",
+        "capabilities": [
+          {
+            "type": "marker_provider.v1",
+            "id": "introdb",
+            "display_name": "TheIntroDB",
+            "description": "Fetches and submits intro, credits, recap, and preview markers using TheIntroDB."
+          }
+        ]
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.tmdb",
         "version": "1.2.16",
         "silo_api_version": "v1",
