@@ -87,7 +87,7 @@
     {
       "manifest": {
         "plugin_id": "silo.tvdb",
-        "version": "1.2.18",
+        "version": "1.2.19",
         "silo_api_version": "v1",
         "capabilities": [
           {
@@ -99,16 +99,16 @@
         ]
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-tvdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.18/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.18/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.18/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.18/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/plugin-linux-arm64"
         }
       }
     }
