@@ -3,28 +3,28 @@
     {
       "manifest": {
         "plugin_id": "silo.audiobook-metadata",
-        "version": "0.1.2",
+        "version": "0.1.3",
         "silo_api_version": "v1",
         "capabilities": [
           {
             "type": "metadata_provider.v1",
             "id": "audiobook-metadata",
             "display_name": "Audiobook Metadata",
-            "description": "Metadata provider for audiobook items. Wraps Audnexus, AudiMeta, iTunes, Audible, and Storytel."
+            "description": "Metadata provider for audiobook items. Wraps Audnexus, AudiMeta, iTunes, Audible, Storytel, BookBeat, Audioteka, and AudiobookCovers."
           }
         ]
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.2/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.3/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.3/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.3/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-audiobook-metadata/releases/download/v0.1.3/plugin-linux-arm64"
         }
       }
     },
