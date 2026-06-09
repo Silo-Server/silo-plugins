@@ -71,12 +71,11 @@ func fetchRelease(ctx context.Context, client *http.Client, token, repo, tag str
 	return release, nil
 }
 
-func fetchSourceManifest(ctx context.Context, client *http.Client, token, repo, tag string) (catalog.SourceManifest, error) {
-	var manifest catalog.SourceManifest
+func fetchSourceManifest(ctx context.Context, client *http.Client, token, repo, tag string) (*catalog.SourceManifest, error) {
 	url := "https://raw.githubusercontent.com/" + repo + "/" + tag + "/manifest.json"
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		return catalog.SourceManifest{}, fmt.Errorf("build request: %w", err)
+		return nil, fmt.Errorf("build request: %w", err)
 	}
 	req.Header.Set("User-Agent", "silo-plugins-catalog-updater")
 	if token != "" {
@@ -85,15 +84,20 @@ func fetchSourceManifest(ctx context.Context, client *http.Client, token, repo, 
 
 	resp, err := client.Do(req)
 	if err != nil {
-		return catalog.SourceManifest{}, fmt.Errorf("GET %s: %w", url, err)
+		return nil, fmt.Errorf("GET %s: %w", url, err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(io.LimitReader(resp.Body, 4<<10))
-		return catalog.SourceManifest{}, fmt.Errorf("GET %s: status %d: %s", url, resp.StatusCode, strings.TrimSpace(string(body)))
+		return nil, fmt.Errorf("GET %s: status %d: %s", url, resp.StatusCode, strings.TrimSpace(string(body)))
 	}
-	if err := json.NewDecoder(resp.Body).Decode(&manifest); err != nil {
-		return catalog.SourceManifest{}, fmt.Errorf("decode source manifest: %w", err)
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("read source manifest: %w", err)
+	}
+	manifest, err := catalog.DecodeSourceManifest(body)
+	if err != nil {
+		return nil, err
 	}
 	return manifest, nil
 }

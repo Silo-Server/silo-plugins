@@ -1,18 +1,21 @@
 package catalog
 
 import (
+	"encoding/json"
 	"testing"
+
+	pluginv1 "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginproto/silo/plugin/v1"
 )
 
 func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
-	source := SourceManifest{
-		PluginID:       "silo.tmdb",
+	source := &SourceManifest{
+		PluginId:       "silo.tmdb",
 		Version:        "1.2.3",
-		SiloAPIVersion: "v1",
-		Capabilities: []SourceCapability{
+		SiloApiVersion: "v1",
+		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{
 				Type:        "metadata_provider.v1",
-				ID:          "tmdb",
+				Id:          "tmdb",
 				DisplayName: "TMDB",
 				Description: "TMDB metadata provider for Silo.",
 			},
@@ -37,11 +40,14 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 	if pkg.RepoURL != "https://github.com/Silo-Server/silo-plugin-tmdb" {
 		t.Fatalf("RepoURL = %q", pkg.RepoURL)
 	}
-	if pkg.Manifest.PluginID != "silo.tmdb" {
-		t.Fatalf("PluginID = %q", pkg.Manifest.PluginID)
+	if pkg.Manifest.GetPluginId() != "silo.tmdb" {
+		t.Fatalf("PluginID = %q", pkg.Manifest.GetPluginId())
 	}
-	if pkg.Manifest.Version != "1.2.3" {
-		t.Fatalf("Version = %q", pkg.Manifest.Version)
+	if pkg.Manifest.GetVersion() != "1.2.3" {
+		t.Fatalf("Version = %q", pkg.Manifest.GetVersion())
+	}
+	if pkg.Manifest.GetChecksum() != "" {
+		t.Fatalf("Checksum = %q, want empty catalog checksum", pkg.Manifest.GetChecksum())
 	}
 	if got := len(pkg.Binaries); got != 2 {
 		t.Fatalf("Binaries length = %d, want 2", got)
@@ -52,12 +58,12 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 }
 
 func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
-	source := SourceManifest{
-		PluginID:       "silo.tmdb",
+	source := &SourceManifest{
+		PluginId:       "silo.tmdb",
 		Version:        "1.2.2",
-		SiloAPIVersion: "v1",
-		Capabilities: []SourceCapability{
-			{Type: "metadata_provider.v1", ID: "tmdb"},
+		SiloApiVersion: "v1",
+		Capabilities: []*pluginv1.CapabilityDescriptor{
+			{Type: "metadata_provider.v1", Id: "tmdb"},
 		},
 	}
 	release := Release{
@@ -72,8 +78,102 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 	if err != nil {
 		t.Fatalf("BuildPackageFromRelease() error = %v", err)
 	}
-	if pkg.Manifest.Version != "1.2.3" {
-		t.Fatalf("Version = %q, want %q (tag should override manifest)", pkg.Manifest.Version, "1.2.3")
+	if pkg.Manifest.GetVersion() != "1.2.3" {
+		t.Fatalf("Version = %q, want %q (tag should override manifest)", pkg.Manifest.GetVersion(), "1.2.3")
+	}
+}
+
+func TestBuildPackageFromRelease_PreservesManifestMetadataAndConfigSchema(t *testing.T) {
+	source, err := DecodeSourceManifest([]byte(`{
+	  "plugin_id": "silo.requests.arr",
+	  "version": "0.1.0",
+	  "checksum": "__CHECKSUM__",
+	  "silo_api_version": "v1",
+	  "supported_platforms": [{"os": "linux", "arch": "amd64"}],
+	  "capabilities": [{
+	    "type": "request_router.v1",
+	    "id": "arr",
+	    "display_name": "Sonarr / Radarr",
+	    "metadata": {"default_priority": {"series": 5}},
+	    "config_schema": [{
+	      "key": "connection",
+	      "json_schema": "{\"type\":\"object\",\"properties\":{\"service_kind\":{\"type\":\"string\"}}}",
+	      "admin_form": {
+	        "submit_label": "Save connection",
+	        "fields": [{
+	          "key": "service_kind",
+	          "label": "Service",
+	          "control": "ADMIN_FORM_CONTROL_SELECT",
+	          "options": [{"value": "sonarr", "label": "Sonarr"}]
+	        }]
+	      }
+	    }]
+	  }],
+	  "global_config_schema": [{
+	    "key": "account",
+	    "json_schema": "{\"type\":\"object\",\"properties\":{\"api_key\":{\"type\":\"string\"}}}",
+	    "admin_form": {
+	      "fields": [{
+	        "key": "api_key",
+	        "label": "API Key",
+	        "control": "ADMIN_FORM_CONTROL_PASSWORD",
+	        "secret": true
+	      }]
+	    }
+	  }]
+	}`))
+	if err != nil {
+		t.Fatalf("DecodeSourceManifest() error = %v", err)
+	}
+	release := Release{
+		TagName: "v0.1.1",
+		Assets: []Asset{
+			{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/arr/plugin-linux-amd64"},
+			{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/arr/checksums.txt"},
+		},
+	}
+
+	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugins-requests-arr", source, release)
+	if err != nil {
+		t.Fatalf("BuildPackageFromRelease() error = %v", err)
+	}
+
+	if pkg.Manifest.GetVersion() != "0.1.1" {
+		t.Fatalf("Version = %q, want tag version", pkg.Manifest.GetVersion())
+	}
+	if got := len(pkg.Manifest.GetSupportedPlatforms()); got != 1 {
+		t.Fatalf("SupportedPlatforms length = %d, want 1", got)
+	}
+	capability := pkg.Manifest.GetCapabilities()[0]
+	if capability.GetMetadata().AsMap()["default_priority"] == nil {
+		t.Fatalf("metadata default_priority was not preserved: %v", capability.GetMetadata())
+	}
+	if got := len(capability.GetConfigSchema()); got != 1 {
+		t.Fatalf("ConfigSchema length = %d, want 1", got)
+	}
+	field := capability.GetConfigSchema()[0].GetAdminForm().GetFields()[0]
+	if field.GetControl() != pluginv1.AdminFormControl_ADMIN_FORM_CONTROL_SELECT {
+		t.Fatalf("control = %v, want select", field.GetControl())
+	}
+	if got := len(pkg.Manifest.GetGlobalConfigSchema()); got != 1 {
+		t.Fatalf("GlobalConfigSchema length = %d, want 1", got)
+	}
+
+	data, err := json.Marshal(RepositoryIndex{Plugins: []CatalogPackage{pkg}})
+	if err != nil {
+		t.Fatalf("Marshal catalog() error = %v", err)
+	}
+	var decoded struct {
+		Plugins []struct {
+			Manifest *pluginv1.PluginManifest `json:"manifest"`
+		} `json:"plugins"`
+	}
+	if err := json.Unmarshal(data, &decoded); err != nil {
+		t.Fatalf("standard json decode like Silo catalog_service failed: %v\n%s", err, data)
+	}
+	decodedField := decoded.Plugins[0].Manifest.GetCapabilities()[0].GetConfigSchema()[0].GetAdminForm().GetFields()[0]
+	if decodedField.GetControl() != pluginv1.AdminFormControl_ADMIN_FORM_CONTROL_SELECT {
+		t.Fatalf("decoded control = %v, want select", decodedField.GetControl())
 	}
 }
 
@@ -81,27 +181,27 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 	index := RepositoryIndex{
 		Plugins: []CatalogPackage{
 			{
-				Manifest: CatalogManifest{
-					PluginID:       "silo.tvdb",
+				Manifest: &pluginv1.PluginManifest{
+					PluginId:       "silo.tvdb",
 					Version:        "1.0.0",
-					SiloAPIVersion: "v1",
+					SiloApiVersion: "v1",
 				},
 			},
 			{
-				Manifest: CatalogManifest{
-					PluginID:       "silo.tmdb",
+				Manifest: &pluginv1.PluginManifest{
+					PluginId:       "silo.tmdb",
 					Version:        "1.0.0",
-					SiloAPIVersion: "v1",
+					SiloApiVersion: "v1",
 				},
 			},
 		},
 	}
 
 	updated := CatalogPackage{
-		Manifest: CatalogManifest{
-			PluginID:       "silo.tmdb",
+		Manifest: &pluginv1.PluginManifest{
+			PluginId:       "silo.tmdb",
 			Version:        "1.2.3",
-			SiloAPIVersion: "v1",
+			SiloApiVersion: "v1",
 		},
 		RepoURL: "https://github.com/Silo-Server/silo-plugin-tmdb",
 	}
@@ -111,13 +211,13 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 	if len(index.Plugins) != 2 {
 		t.Fatalf("Plugins length = %d, want 2", len(index.Plugins))
 	}
-	if index.Plugins[0].Manifest.PluginID != "silo.tmdb" {
-		t.Fatalf("Plugins[0].PluginID = %q", index.Plugins[0].Manifest.PluginID)
+	if index.Plugins[0].Manifest.GetPluginId() != "silo.tmdb" {
+		t.Fatalf("Plugins[0].PluginID = %q", index.Plugins[0].Manifest.GetPluginId())
 	}
-	if index.Plugins[0].Manifest.Version != "1.2.3" {
-		t.Fatalf("Plugins[0].Version = %q", index.Plugins[0].Manifest.Version)
+	if index.Plugins[0].Manifest.GetVersion() != "1.2.3" {
+		t.Fatalf("Plugins[0].Version = %q", index.Plugins[0].Manifest.GetVersion())
 	}
-	if index.Plugins[1].Manifest.PluginID != "silo.tvdb" {
-		t.Fatalf("Plugins[1].PluginID = %q", index.Plugins[1].Manifest.PluginID)
+	if index.Plugins[1].Manifest.GetPluginId() != "silo.tvdb" {
+		t.Fatalf("Plugins[1].PluginID = %q", index.Plugins[1].Manifest.GetPluginId())
 	}
 }

@@ -32,7 +32,7 @@ jobs:
 
       - name: Update catalog manifest
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.CATALOG_SOURCE_TOKEN || github.token }}
           PLUGIN_REPO: ${{ inputs.repo || github.event.client_payload.repo }}
           PLUGIN_TAG: ${{ inputs.tag || github.event.client_payload.tag }}
         run: |
