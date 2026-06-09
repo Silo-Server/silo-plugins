@@ -105,6 +105,274 @@
     },
     {
       "manifest": {
+        "plugin_id": "silo.requests.arr",
+        "version": "0.1.0",
+        "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          },
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "request_router.v1",
+            "id": "arr",
+            "display_name": "Sonarr / Radarr",
+            "description": "Fulfills movie/series requests against multi-instance Sonarr/Radarr.",
+            "config_schema": [
+              {
+                "key": "connection",
+                "title": "Connection",
+                "json_schema": "{\"type\":\"object\",\"properties\":{\"service_kind\":{\"type\":\"string\"},\"root_folder\":{\"type\":\"string\"},\"quality_profile_id\":{\"type\":\"integer\"},\"tags\":{\"type\":\"array\",\"items\":{\"type\":\"integer\"}},\"is_default\":{\"type\":\"boolean\"},\"is_4k\":{\"type\":\"boolean\"},\"is_default_4k\":{\"type\":\"boolean\"},\"search_on_add\":{\"type\":\"boolean\"},\"minimum_availability\":{\"type\":\"string\"},\"series_type\":{\"type\":\"string\"},\"season_folder\":{\"type\":\"boolean\"},\"anime_enabled\":{\"type\":\"boolean\"},\"anime_root_folder\":{\"type\":\"string\"},\"anime_quality_profile_id\":{\"type\":\"integer\"},\"anime_tags\":{\"type\":\"array\",\"items\":{\"type\":\"integer\"}}}}",
+                "admin_form": {
+                  "fields": [
+                    {
+                      "key": "service_kind",
+                      "label": "Service",
+                      "control": 6,
+                      "required": true,
+                      "options": [
+                        {
+                          "value": "radarr",
+                          "label": "Radarr (movies)"
+                        },
+                        {
+                          "value": "sonarr",
+                          "label": "Sonarr (series)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "root_folder",
+                      "label": "Root folder",
+                      "control": 6,
+                      "dynamic_options": true
+                    },
+                    {
+                      "key": "quality_profile_id",
+                      "label": "Quality profile",
+                      "control": 6,
+                      "required": true,
+                      "dynamic_options": true
+                    },
+                    {
+                      "key": "tags",
+                      "label": "Tags",
+                      "control": 7,
+                      "dynamic_options": true
+                    },
+                    {
+                      "key": "is_default",
+                      "label": "Default (HD/1080p)",
+                      "control": 5,
+                      "exclusive_group_field": "service_kind"
+                    },
+                    {
+                      "key": "is_4k",
+                      "label": "4K instance",
+                      "control": 5
+                    },
+                    {
+                      "key": "is_default_4k",
+                      "label": "Default 4K (2160p)",
+                      "control": 5,
+                      "show_when": [
+                        {
+                          "field": "is_4k",
+                          "equals": [
+                            "true"
+                          ]
+                        }
+                      ],
+                      "exclusive_group_field": "service_kind"
+                    },
+                    {
+                      "key": "search_on_add",
+                      "label": "Search on add",
+                      "control": 5,
+                      "default_value": true
+                    },
+                    {
+                      "key": "minimum_availability",
+                      "label": "Minimum availability",
+                      "control": 6,
+                      "default_value": "released",
+                      "options": [
+                        {
+                          "value": "announced",
+                          "label": "Announced"
+                        },
+                        {
+                          "value": "inCinemas",
+                          "label": "In cinemas"
+                        },
+                        {
+                          "value": "released",
+                          "label": "Released"
+                        }
+                      ],
+                      "show_when": [
+                        {
+                          "field": "service_kind",
+                          "equals": [
+                            "radarr"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "series_type",
+                      "label": "Series type",
+                      "control": 6,
+                      "default_value": "standard",
+                      "options": [
+                        {
+                          "value": "standard",
+                          "label": "Standard"
+                        },
+                        {
+                          "value": "daily",
+                          "label": "Daily"
+                        },
+                        {
+                          "value": "anime",
+                          "label": "Anime"
+                        }
+                      ],
+                      "show_when": [
+                        {
+                          "field": "service_kind",
+                          "equals": [
+                            "sonarr"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "season_folder",
+                      "label": "Season folder",
+                      "control": 5,
+                      "default_value": true,
+                      "show_when": [
+                        {
+                          "field": "service_kind",
+                          "equals": [
+                            "sonarr"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "anime_enabled",
+                      "label": "Enable anime overrides",
+                      "control": 5
+                    },
+                    {
+                      "key": "anime_root_folder",
+                      "label": "Anime root folder",
+                      "control": 6,
+                      "dynamic_options": true,
+                      "show_when": [
+                        {
+                          "field": "anime_enabled",
+                          "equals": [
+                            "true"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "anime_quality_profile_id",
+                      "label": "Anime quality profile",
+                      "control": 6,
+                      "dynamic_options": true,
+                      "show_when": [
+                        {
+                          "field": "anime_enabled",
+                          "equals": [
+                            "true"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "anime_tags",
+                      "label": "Anime tags",
+                      "control": 7,
+                      "dynamic_options": true,
+                      "show_when": [
+                        {
+                          "field": "anime_enabled",
+                          "equals": [
+                            "true"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "submit_label": "Save connection",
+                  "sections": [
+                    {
+                      "key": "library",
+                      "title": "Library",
+                      "collapsible": true,
+                      "collapsed_default": true,
+                      "field_keys": [
+                        "service_kind",
+                        "root_folder",
+                        "quality_profile_id",
+                        "tags",
+                        "is_default",
+                        "is_4k",
+                        "is_default_4k",
+                        "search_on_add",
+                        "minimum_availability",
+                        "series_type",
+                        "season_folder"
+                      ]
+                    },
+                    {
+                      "key": "anime",
+                      "title": "Anime overrides",
+                      "field_keys": [
+                        "anime_enabled",
+                        "anime_root_folder",
+                        "anime_quality_profile_id",
+                        "anime_tags"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugins-requests-arr",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.requests.seerr",
         "version": "0.1.0",
         "silo_api_version": "v1",
