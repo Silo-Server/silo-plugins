@@ -481,6 +481,74 @@
     },
     {
       "manifest": {
+        "plugin_id": "silo.sportarr",
+        "version": "1.0.0",
+        "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "metadata_provider.v1",
+            "id": "sportarr",
+            "display_name": "Sportarr",
+            "description": "Sportarr — metadata for sports leagues as TV shows.",
+            "metadata": {
+              "default_priority": {
+                "episode": 1,
+                "season": 1,
+                "series": 1
+              }
+            }
+          }
+        ],
+        "global_config_schema": [
+          {
+            "key": "sportarr",
+            "title": "Sportarr",
+            "description": "Configure Sportarr API access",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\"}}}",
+            "admin_form": {
+              "fields": [
+                {
+                  "key": "base_url",
+                  "label": "Base URL",
+                  "description": "Sportarr instance URL. Defaults to https://sportarr.net if left empty.",
+                  "control": 1,
+                  "placeholder": "https://sportarr.net"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-sportarr",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.theintrodb",
         "version": "0.1.0",
         "silo_api_version": "v1",
