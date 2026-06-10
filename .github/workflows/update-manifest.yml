@@ -12,6 +12,7 @@ on:
           - autoscan-arr
           - requests-arr
           - requests-seerr
+          - sportarr
           - tmdb
           - tvdb
       version:
