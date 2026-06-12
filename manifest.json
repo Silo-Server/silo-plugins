@@ -482,7 +482,7 @@
     {
       "manifest": {
         "plugin_id": "silo.sportarr",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -534,16 +534,16 @@
         ]
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-sportarr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.0/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-sportarr/releases/download/v1.0.1/plugin-linux-arm64"
         }
       }
     },
