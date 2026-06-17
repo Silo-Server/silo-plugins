@@ -732,28 +732,49 @@
     {
       "manifest": {
         "plugin_id": "silo.tvdb",
-        "version": "1.2.19",
+        "version": "1.2.20",
         "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
         "capabilities": [
           {
             "type": "metadata_provider.v1",
             "id": "tvdb",
             "display_name": "TVDB",
-            "description": "TheTVDB — metadata for TV series."
+            "description": "TheTVDB — metadata for TV series.",
+            "metadata": {
+              "default_priority": {
+                "episode": 2,
+                "season": 2,
+                "series": 2
+              }
+            }
           }
         ]
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-tvdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.20/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.20/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.20/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.19/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.20/plugin-linux-arm64"
         }
       }
     }
