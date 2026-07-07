@@ -766,7 +766,7 @@
     {
       "manifest": {
         "plugin_id": "silo.tvdb",
-        "version": "1.2.21",
+        "version": "1.2.22",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -811,16 +811,16 @@
         ]
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-tvdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.21/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.22/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.21/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.22/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.21/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.22/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.21/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-tvdb/releases/download/v1.2.22/plugin-linux-arm64"
         }
       }
     }
