@@ -852,28 +852,81 @@
     {
       "manifest": {
         "plugin_id": "silo.theintrodb",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
         "capabilities": [
           {
             "type": "marker_provider.v1",
             "id": "introdb",
             "display_name": "TheIntroDB",
-            "description": "Fetches and submits intro, credits, recap, and preview markers using TheIntroDB."
+            "description": "Fetches and submits intro, credits, recap, and preview markers using TheIntroDB.",
+            "metadata": {
+              "default_fetch_priority": 100,
+              "required_external_ids": [
+                "tmdb"
+              ]
+            }
           }
-        ]
+        ],
+        "global_config_schema": [
+          {
+            "key": "account",
+            "title": "TheIntroDB Account",
+            "description": "Optional TheIntroDB API key used for submissions and account statistics.",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+            "admin_form": {
+              "fields": [
+                {
+                  "key": "api_key",
+                  "label": "API Key",
+                  "description": "TheIntroDB API key from your profile.",
+                  "control": 3,
+                  "secret": true
+                }
+              ],
+              "submit_label": "Save TheIntroDB account"
+            }
+          }
+        ],
+        "presentation": {
+          "display_name": "TheIntroDB Markers",
+          "summary": "Fetch and submit intro, credits, recap, and preview markers through TheIntroDB.",
+          "description_markdown": "Adds community-maintained playback markers from TheIntroDB to movies and TV episodes. It can fetch markers without an account and can submit corrections or new markers when an API key is configured.",
+          "setup_markdown": "Install the plugin and enable **TheIntroDB** as a marker provider. Fetching works without configuration. Add your TheIntroDB API key if you want to submit markers or view account statistics.",
+          "homepage_url": "https://theintrodb.org",
+          "source_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb",
+          "support_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/issues",
+          "changelog_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases",
+          "publisher_name": "Silo",
+          "publisher_url": "https://github.com/Silo-Server",
+          "license_spdx": "AGPL-3.0-only"
+        }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.0/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-introdb/releases/download/v0.1.1/plugin-linux-arm64"
         }
       }
     },
