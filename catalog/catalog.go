@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	pluginv1 "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginproto/silo/plugin/v1"
+	pluginmanifest "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginsdk/manifest"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
@@ -58,6 +59,10 @@ func BuildPackageFromRelease(repo string, source *SourceManifest, release Releas
 	if len(source.GetCapabilities()) == 0 {
 		return CatalogPackage{}, fmt.Errorf("source manifest capabilities are required")
 	}
+	repositoryURL := "https://github.com/" + repo
+	if err := pluginmanifest.ValidateCatalogPresentation(source, repositoryURL); err != nil {
+		return CatalogPackage{}, fmt.Errorf("source manifest presentation: %w", err)
+	}
 
 	version := strings.TrimPrefix(strings.TrimSpace(release.TagName), "v")
 	if version == "" {
@@ -100,7 +105,7 @@ func BuildPackageFromRelease(repo string, source *SourceManifest, release Releas
 
 	return CatalogPackage{
 		Manifest:     manifest,
-		RepoURL:      "https://github.com/" + repo,
+		RepoURL:      repositoryURL,
 		ChecksumsURL: checksumsURL,
 		Binaries:     binaries,
 	}, nil

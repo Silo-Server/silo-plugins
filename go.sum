@@ -1,5 +1,5 @@
-github.com/Silo-Server/silo-plugin-sdk v0.6.0 h1:Gi9TdH9kt7b8X4xRXH493/nSYb9n0GO4VCWmlll0hKI=
-github.com/Silo-Server/silo-plugin-sdk v0.6.0/go.mod h1:etqmxLTwjxpFH9goAjBDfNDoqHMv2/sqUXu8yx3hNfA=
+github.com/Silo-Server/silo-plugin-sdk v0.10.0 h1:OU2PfQwnUQAnf8FEZSTfWI+3x0OBiVfjKHHaVWhD/E0=
+github.com/Silo-Server/silo-plugin-sdk v0.10.0/go.mod h1:etqmxLTwjxpFH9goAjBDfNDoqHMv2/sqUXu8yx3hNfA=
 github.com/go-logr/logr v1.4.3 h1:CjnDlHq8ikf6E492q6eKboGOC0T8CDaOvkHCIg8idEI=
 github.com/go-logr/logr v1.4.3/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/go-logr/stdr v1.2.2 h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=
