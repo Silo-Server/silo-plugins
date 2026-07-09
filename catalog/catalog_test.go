@@ -12,6 +12,7 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 		PluginId:       "silo.tmdb",
 		Version:        "1.2.3",
 		SiloApiVersion: "v1",
+		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{
 				Type:        "metadata_provider.v1",
@@ -62,6 +63,7 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 		PluginId:       "silo.tmdb",
 		Version:        "1.2.2",
 		SiloApiVersion: "v1",
+		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "metadata_provider.v1", Id: "tmdb"},
 		},
@@ -83,12 +85,47 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 	}
 }
 
+func TestBuildPackageFromRelease_RequiresCompletePresentation(t *testing.T) {
+	source := &SourceManifest{
+		PluginId:       "silo.tmdb",
+		Version:        "1.2.3",
+		SiloApiVersion: "v1",
+		Capabilities: []*pluginv1.CapabilityDescriptor{
+			{Type: "metadata_provider.v1", Id: "tmdb"},
+		},
+	}
+	release := Release{
+		TagName: "v1.2.3",
+		Assets: []Asset{
+			{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/tmdb/plugin-linux-amd64"},
+			{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/tmdb/checksums.txt"},
+		},
+	}
+
+	if _, err := BuildPackageFromRelease("Silo-Server/silo-plugin-tmdb", source, release); err == nil {
+		t.Fatal("BuildPackageFromRelease() accepted a manifest without presentation metadata")
+	}
+}
+
 func TestBuildPackageFromRelease_PreservesManifestMetadataAndConfigSchema(t *testing.T) {
 	source, err := DecodeSourceManifest([]byte(`{
 	  "plugin_id": "silo.requests.arr",
 	  "version": "0.1.0",
 	  "checksum": "__CHECKSUM__",
 	  "silo_api_version": "v1",
+	  "presentation": {
+	    "display_name": "Sonarr & Radarr Requests",
+	    "summary": "Routes requests to Sonarr and Radarr.",
+	    "description_markdown": "Routes approved requests.",
+	    "setup_markdown": "Add a connection.",
+	    "homepage_url": "https://github.com/Silo-Server/silo-plugins-requests-arr",
+	    "source_url": "https://github.com/Silo-Server/silo-plugins-requests-arr",
+	    "support_url": "https://github.com/Silo-Server/silo-plugins-requests-arr/issues",
+	    "changelog_url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases",
+	    "publisher_name": "Silo",
+	    "publisher_url": "https://github.com/Silo-Server",
+	    "license_spdx": "AGPL-3.0-only"
+	  },
 	  "supported_platforms": [{"os": "linux", "arch": "amd64"}],
 	  "capabilities": [{
 	    "type": "request_router.v1",
@@ -174,6 +211,22 @@ func TestBuildPackageFromRelease_PreservesManifestMetadataAndConfigSchema(t *tes
 	decodedField := decoded.Plugins[0].Manifest.GetCapabilities()[0].GetConfigSchema()[0].GetAdminForm().GetFields()[0]
 	if decodedField.GetControl() != pluginv1.AdminFormControl_ADMIN_FORM_CONTROL_SELECT {
 		t.Fatalf("decoded control = %v, want select", decodedField.GetControl())
+	}
+}
+
+func catalogTestPresentation(sourceURL string) *pluginv1.PluginPresentation {
+	return &pluginv1.PluginPresentation{
+		DisplayName:         "Test Plugin",
+		Summary:             "Test summary.",
+		DescriptionMarkdown: "Test description.",
+		SetupMarkdown:       "Test setup.",
+		HomepageUrl:         sourceURL,
+		SourceUrl:           sourceURL,
+		SupportUrl:          sourceURL + "/issues",
+		ChangelogUrl:        sourceURL + "/releases",
+		PublisherName:       "Silo",
+		PublisherUrl:        "https://github.com/Silo-Server",
+		LicenseSpdx:         "AGPL-3.0-only",
 	}
 }
 
