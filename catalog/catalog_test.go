@@ -12,7 +12,7 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 		PluginId:       "silo.tmdb",
 		Version:        "1.2.3",
 		SiloApiVersion: "v1",
-		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-tmdb"),
+		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{
 				Type:        "metadata_provider.v1",
@@ -33,12 +33,12 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 		},
 	}
 
-	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-tmdb", source, release)
+	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-metadata-tmdb", source, release)
 	if err != nil {
 		t.Fatalf("BuildPackageFromRelease() error = %v", err)
 	}
 
-	if pkg.RepoURL != "https://github.com/Silo-Server/silo-plugin-tmdb" {
+	if pkg.RepoURL != "https://github.com/Silo-Server/silo-plugin-metadata-tmdb" {
 		t.Fatalf("RepoURL = %q", pkg.RepoURL)
 	}
 	if pkg.Manifest.GetPluginId() != "silo.tmdb" {
@@ -63,7 +63,7 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 		PluginId:       "silo.tmdb",
 		Version:        "1.2.2",
 		SiloApiVersion: "v1",
-		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-tmdb"),
+		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "metadata_provider.v1", Id: "tmdb"},
 		},
@@ -76,7 +76,7 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 		},
 	}
 
-	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-tmdb", source, release)
+	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-metadata-tmdb", source, release)
 	if err != nil {
 		t.Fatalf("BuildPackageFromRelease() error = %v", err)
 	}
@@ -102,7 +102,7 @@ func TestBuildPackageFromRelease_RequiresCompletePresentation(t *testing.T) {
 		},
 	}
 
-	if _, err := BuildPackageFromRelease("Silo-Server/silo-plugin-tmdb", source, release); err == nil {
+	if _, err := BuildPackageFromRelease("Silo-Server/silo-plugin-metadata-tmdb", source, release); err == nil {
 		t.Fatal("BuildPackageFromRelease() accepted a manifest without presentation metadata")
 	}
 }
@@ -256,7 +256,7 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 			Version:        "1.2.3",
 			SiloApiVersion: "v1",
 		},
-		RepoURL: "https://github.com/Silo-Server/silo-plugin-tmdb",
+		RepoURL: "https://github.com/Silo-Server/silo-plugin-metadata-tmdb",
 	}
 
 	index = UpsertPackage(index, updated)
