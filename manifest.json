@@ -770,7 +770,7 @@
     {
       "manifest": {
         "plugin_id": "silo.sportarr",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -807,7 +807,7 @@
             "key": "sportarr",
             "title": "Sportarr",
             "description": "Configure Sportarr API access",
-            "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\"}}}",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\"},\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
             "admin_form": {
               "fields": [
                 {
@@ -816,6 +816,13 @@
                   "description": "Sportarr instance URL. Defaults to https://sportarr.net if left empty.",
                   "control": 1,
                   "placeholder": "https://sportarr.net"
+                },
+                {
+                  "key": "api_key",
+                  "label": "API Key",
+                  "description": "API key for protected image endpoints on a self-hosted Sportarr instance.",
+                  "control": 3,
+                  "secret": true
                 }
               ]
             }
@@ -825,7 +832,7 @@
           "display_name": "Sportarr Metadata",
           "summary": "Build sports libraries from Sportarr league, season, and event metadata.",
           "description_markdown": "Maps Sportarr leagues to series, seasons to seasons, and events to episodes so sports libraries behave like familiar TV libraries in Silo. The provider is installed disabled by default so administrators can opt in where it fits their library layout.",
-          "setup_markdown": "Install the plugin, configure the Sportarr base URL if you do not use `https://sportarr.net`, then enable **Sportarr Metadata** in the metadata provider chain for the relevant sports library.",
+          "setup_markdown": "Install the plugin, configure the Sportarr base URL if you do not use `https://sportarr.net`, and add the instance API key when its protected image API is enabled. Then enable **Sportarr Metadata** in the metadata provider chain for the relevant sports library.",
           "homepage_url": "https://sportarr.net",
           "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
           "support_url": "https://github.com/Silo-Server/silo-server/issues",
@@ -836,16 +843,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.3/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.3/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.3/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.3/plugin-linux-arm64"
         }
       }
     },
