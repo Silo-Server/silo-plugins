@@ -13,9 +13,10 @@ Plugin repositories should dispatch `plugin_release_published` after publishing
 a release. Set `SILO_PLUGINS_DISPATCH_TOKEN` in the plugin repository so it can
 call `repository_dispatch` on `Silo-Server/silo-plugins`.
 
-`silo-plugins` uses `CATALOG_PUSH_TOKEN` to push catalog updates. If plugin
-repositories are private, also set `CATALOG_SOURCE_TOKEN` in `silo-plugins` so
-the updater can read release metadata and the tagged `manifest.json`.
+`silo-plugins` uses `CATALOG_PUSH_TOKEN` to push catalog updates. Reading a
+plugin's release metadata and its tagged `manifest.json` needs no extra
+credential: every catalogued plugin repository is public, so the workflow's own
+`github.token` is enough. A plugin has to be public before it dispatches.
 
 To exercise ingestion locally against an existing tagged release, pass the
 repository in `owner/name` form and the exact release tag:
