@@ -1244,7 +1244,7 @@
     {
       "manifest": {
         "plugin_id": "silo.watchprovider.floppy",
-        "version": "0.2.3",
+        "version": "0.3.0",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -1265,7 +1265,7 @@
             "type": "watch_sync_provider.v1",
             "id": "floppy",
             "display_name": "Floppy",
-            "description": "Bidirectional watch history, resume progress, and live scrobbling for a self-hosted Floppy instance.",
+            "description": "Bidirectional watch history, movie and series ratings, resume progress, and live scrobbling for a self-hosted Floppy instance.",
             "config_schema": [
               {
                 "key": "floppy",
@@ -1296,7 +1296,8 @@
               "import_progress": true,
               "supported_media_types": [
                 1,
-                2
+                2,
+                3
               ],
               "external_id_namespaces": [
                 "tmdb",
@@ -1304,7 +1305,9 @@
                 "tvdb"
               ],
               "max_batch_size": 50,
-              "scrobble_playback": true
+              "scrobble_playback": true,
+              "import_ratings": true,
+              "export_ratings": true
             }
           }
         ],
@@ -1312,8 +1315,8 @@
         "presentation": {
           "display_name": "Floppy Watch Provider",
           "summary": "Sync Silo watch activity with a self-hosted Floppy instance.",
-          "description_markdown": "Imports movie and episode history and resume progress, exports completed watches, and forwards live playback start, pause, and stop events.",
-          "setup_markdown": "Connect a Silo profile by entering that profile's Floppy server URL and API token. Different profiles can use different Floppy servers.",
+          "description_markdown": "Imports movie and episode history and resume progress, exports completed watches, syncs movie and series ratings in both directions, and forwards live playback start, pause, and stop events.",
+          "setup_markdown": "Connect a Silo profile by entering that profile's Floppy server URL and API token. Different profiles can use different Floppy servers. A scoped Floppy token needs the tracking preset; sending ratings to Floppy uses its `watchlist:write` scope.",
           "homepage_url": "https://github.com/dannyvfilms/Floppy",
           "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy",
           "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/issues",
@@ -1324,16 +1327,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.2.3/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.2.3/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.2.3/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.2.3/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-linux-arm64"
         }
       }
     }
