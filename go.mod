@@ -3,7 +3,7 @@ module github.com/Silo-Server/silo-plugins
 go 1.26.0
 
 require (
-	github.com/Silo-Server/silo-plugin-sdk v0.16.2-0.20260923231249-95b81a099ca7
+	github.com/Silo-Server/silo-plugin-sdk v0.17.0
 	google.golang.org/protobuf v1.36.11
 )
 
