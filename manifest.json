@@ -462,6 +462,92 @@
     },
     {
       "manifest": {
+        "plugin_id": "silo.mdblist",
+        "version": "0.1.0",
+        "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "metadata_provider.v1",
+            "id": "mdblist",
+            "display_name": "MDBList",
+            "description": "Aggregated ratings, Common Sense age rating, and certification. Enrichment only — never identifies an item.",
+            "metadata": {
+              "default_priority": {
+                "movie": 8,
+                "series": 8
+              },
+              "required_external_ids": [
+                "imdb",
+                "tmdb"
+              ]
+            }
+          }
+        ],
+        "global_config_schema": [
+          {
+            "key": "account",
+            "title": "MDBList Account",
+            "description": "MDBList API key. Without it the provider stays idle and contributes nothing.",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+            "required": true,
+            "admin_form": {
+              "fields": [
+                {
+                  "key": "api_key",
+                  "label": "API Key",
+                  "description": "Free API key from your MDBList preferences page.",
+                  "control": 3,
+                  "secret": true
+                }
+              ],
+              "submit_label": "Save MDBList account"
+            }
+          }
+        ],
+        "presentation": {
+          "display_name": "MDBList Ratings",
+          "summary": "Aggregated star ratings and age ratings from MDBList.",
+          "description_markdown": "Fills in ratings that other metadata providers leave empty: IMDb, TMDB, and Rotten Tomatoes critic and audience scores, plus the Common Sense age rating and the release certification.\n\nThis provider never identifies an item. It looks up titles that another provider has already matched, using the IMDb or TMDB ID that provider resolved, so it must sit *below* a primary metadata provider such as TMDB in a library's provider chain.",
+          "setup_markdown": "Create a free API key in your MDBList preferences, add it below, then add **MDBList** to a library's metadata provider chain at a lower priority than your primary provider.\n\nThe free tier allows 1000 requests per day. When that runs out the plugin simply returns no data, leaving the fields for another provider to fill; it never fails a metadata refresh.",
+          "homepage_url": "https://mdblist.com",
+          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist",
+          "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/issues",
+          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases",
+          "publisher_name": "Silo",
+          "publisher_url": "https://github.com/Silo-Server",
+          "license_spdx": "AGPL-3.0-only"
+        }
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.requests.arr",
         "version": "0.1.0",
         "silo_api_version": "v1",
