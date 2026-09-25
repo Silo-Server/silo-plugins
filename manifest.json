@@ -463,7 +463,7 @@
     {
       "manifest": {
         "plugin_id": "silo.mdblist",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -490,7 +490,7 @@
                 "movie": 8,
                 "series": 8
               },
-              "required_external_ids": [
+              "lookup_provider_ids": [
                 "imdb",
                 "tmdb"
               ]
@@ -533,16 +533,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.2.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.2.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.2.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.1.0/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.2.0/plugin-linux-arm64"
         }
       }
     },
