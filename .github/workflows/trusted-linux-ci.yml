@@ -1,0 +1,22 @@
+name: Trusted Linux CI
+on:
+  workflow_call:
+    inputs:
+      self_hosted:
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ${{ inputs.self_hosted && (github.repository == 'Silo-Server/silo-plugins' && ((github.event_name == 'pull_request' && contains(fromJSON(vars.SILO_CI_MEMBERS || '[]'), github.event.pull_request.user.login)) || (github.event_name != 'pull_request' && github.ref == 'refs/heads/main'))) && fromJSON(format('["self-hosted","linux","x64","silo-linux","silo-run-{0}-{1}","silo-job-test"]', github.run_id, github.run_attempt)) || 'ubuntu-latest' }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+      - run: go test ./...
+      - run: go vet ./...
+      - run: go build ./...
