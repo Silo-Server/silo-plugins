@@ -18,8 +18,13 @@ on:
 permissions:
   contents: write
 
+# One group per plugin. GitHub keeps a single pending run per group and
+# cancels any older pending run, so a shared group dropped one plugin's update
+# whenever three releases landed together. A newer release of the same plugin
+# supersedes an older pending one anyway; different plugins run in parallel and
+# the push loop below resolves their races.
 concurrency:
-  group: plugin-catalog-update
+  group: plugin-catalog-update-${{ inputs.repo || github.event.client_payload.repo }}
   cancel-in-progress: false
 
 jobs:
@@ -34,7 +39,7 @@ jobs:
         with:
           go-version: "1.26"
 
-      - name: Update catalog manifest
+      - name: Update and push the catalog
         env:
           GITHUB_TOKEN: ${{ github.token }}
           PLUGIN_REPO: ${{ inputs.repo || github.event.client_payload.repo }}
@@ -42,19 +47,26 @@ jobs:
         run: |
           test -n "$PLUGIN_REPO"
           test -n "$PLUGIN_TAG"
-          go run ./cmd/update-catalog -repo "$PLUGIN_REPO" -tag "$PLUGIN_TAG"
-
-      - name: Commit catalog changes
-        env:
-          PLUGIN_REPO: ${{ inputs.repo || github.event.client_payload.repo }}
-          PLUGIN_TAG: ${{ inputs.tag || github.event.client_payload.tag }}
-        run: |
-          if git diff --quiet -- manifest.json; then
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add manifest.json
-          git commit -m "chore: update catalog for ${PLUGIN_REPO}@${PLUGIN_TAG}"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # A repository_dispatch run checks out main as it was when the release
+          # fired, and other releases may have updated the catalog since. Each
+          # attempt rebuilds the entry on the current main, so losing a push race
+          # retries instead of conflicting on manifest.json.
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git reset --quiet --hard FETCH_HEAD
+            go run ./cmd/update-catalog -repo "$PLUGIN_REPO" -tag "$PLUGIN_TAG"
+            if git diff --quiet -- manifest.json; then
+              echo "The catalog already lists ${PLUGIN_REPO}@${PLUGIN_TAG}."
+              exit 0
+            fi
+            git add manifest.json
+            git commit --quiet -m "chore: update catalog for ${PLUGIN_REPO}@${PLUGIN_TAG}"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "Could not push the catalog update after 5 attempts." >&2
+          exit 1
