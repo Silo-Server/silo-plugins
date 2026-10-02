@@ -2309,6 +2309,113 @@
     },
     {
       "manifest": {
+        "plugin_id": "silo.watchprovider.simkl",
+        "version": "0.2.0",
+        "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "watch_sync_provider.v1",
+            "id": "simkl",
+            "display_name": "Simkl",
+            "description": "Two-way watch history, plan-to-watch list, dropped shows, and ratings, plus resume progress and live scrobbling for Simkl, anime included.",
+            "watch_sync_provider": {
+              "auth_methods": [
+                3
+              ],
+              "export_watched": true,
+              "export_unwatched": true,
+              "import_watched": true,
+              "import_progress": true,
+              "supported_media_types": [
+                1,
+                2,
+                3
+              ],
+              "external_id_namespaces": [
+                "imdb",
+                "tmdb",
+                "tvdb"
+              ],
+              "max_batch_size": 100,
+              "import_watchlist": true,
+              "export_watchlist": true,
+              "remove_watchlist": true,
+              "scrobble_playback": true,
+              "import_ratings": true,
+              "export_ratings": true,
+              "sync_dropped": true,
+              "rating_export_requires_watched": [
+                1
+              ]
+            }
+          }
+        ],
+        "global_config_schema": [
+          {
+            "key": "app",
+            "title": "Simkl API app",
+            "description": "The Simkl API app that profiles sign in through. Without its client ID, profiles cannot connect to Simkl.",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"client_id\":{\"type\":\"string\",\"minLength\":1}},\"required\":[\"client_id\"],\"additionalProperties\":false}",
+            "required": true,
+            "admin_form": {
+              "fields": [
+                {
+                  "key": "client_id",
+                  "label": "Client ID",
+                  "description": "Client ID of the app you created at simkl.com/settings/developer.",
+                  "control": 1,
+                  "required": true
+                }
+              ],
+              "submit_label": "Save Simkl app"
+            }
+          }
+        ],
+        "category": "Watch Providers",
+        "presentation": {
+          "display_name": "Simkl Watch Provider",
+          "summary": "Sync Silo watch history, plan-to-watch list, dropped shows, and ratings with Simkl.",
+          "description_markdown": "Imports watched movies and episodes, resume progress, the plan-to-watch list, dropped shows, and movie and series ratings from Simkl, anime included. Exports watched and unwatched titles, plan-to-watch changes, dropped shows, and ratings, and forwards live playback start, pause, and stop events. A movie rating is sent once the profile has watched the movie.",
+          "setup_markdown": "Create an app at [simkl.com/settings/developer](https://simkl.com/settings/developer/) and enter its client ID in this plugin's settings. Then connect each Silo profile from its watch-provider settings: Silo shows a PIN code to enter at simkl.com/pin.",
+          "homepage_url": "https://simkl.com",
+          "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
+          "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/issues",
+          "changelog_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases",
+          "publisher_name": "Silo Server",
+          "publisher_url": "https://github.com/Silo-Server",
+          "license_spdx": "AGPL-3.0-only"
+        }
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.watchprovider.trakt",
         "version": "0.2.0",
         "silo_api_version": "v1",
