@@ -2226,6 +2226,89 @@
     },
     {
       "manifest": {
+        "plugin_id": "silo.watchprovider.mdblist",
+        "version": "0.2.0",
+        "silo_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "watch_sync_provider.v1",
+            "id": "mdblist",
+            "display_name": "MDBList",
+            "description": "Two-way watch history, watchlist, and movie and series ratings, resume progress import, and live scrobbling for an MDBList account.",
+            "watch_sync_provider": {
+              "auth_methods": [
+                2
+              ],
+              "export_watched": true,
+              "export_unwatched": true,
+              "import_watched": true,
+              "import_progress": true,
+              "supported_media_types": [
+                1,
+                2,
+                3
+              ],
+              "external_id_namespaces": [
+                "imdb",
+                "tmdb",
+                "tvdb"
+              ],
+              "max_batch_size": 100,
+              "import_watchlist": true,
+              "export_watchlist": true,
+              "remove_watchlist": true,
+              "provides_watchlist_order": true,
+              "scrobble_playback": true,
+              "import_ratings": true,
+              "export_ratings": true
+            }
+          }
+        ],
+        "category": "Watch Providers",
+        "presentation": {
+          "display_name": "MDBList Watch Provider",
+          "summary": "Sync Silo watch history, watchlists, and ratings with MDBList.",
+          "description_markdown": "Imports and exports movie and episode watch history, imports resume progress, syncs the MDBList watchlist in its own order, syncs movie and series ratings in both directions, and forwards live playback start, pause, and stop events.",
+          "setup_markdown": "Each Silo profile connects with its own MDBList API key, created on the API page of your [MDBList preferences](https://mdblist.com/preferences/#api). The plugin needs no server-wide settings.\n\nMDBList's free tier allows 1,000 requests a day. The plugin paces requests to about one a second per key, and when MDBList reports the limit, Silo waits before the next sync.",
+          "homepage_url": "https://mdblist.com",
+          "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist",
+          "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/issues",
+          "changelog_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases",
+          "publisher_name": "Silo Server",
+          "publisher_url": "https://github.com/Silo-Server",
+          "license_spdx": "AGPL-3.0-only"
+        }
+      },
+      "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.2.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.2.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.2.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.2.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "silo.watchprovider.trakt",
         "version": "0.2.0",
         "silo_api_version": "v1",
