@@ -2310,7 +2310,7 @@
     {
       "manifest": {
         "plugin_id": "silo.watchprovider.simkl",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -2369,16 +2369,22 @@
             "key": "app",
             "title": "Simkl API app",
             "description": "The Simkl API app that profiles sign in through. Without its client ID, profiles cannot connect to Simkl.",
-            "json_schema": "{\"type\":\"object\",\"properties\":{\"client_id\":{\"type\":\"string\",\"minLength\":1}},\"required\":[\"client_id\"],\"additionalProperties\":false}",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"client_id\":{\"type\":\"string\",\"minLength\":1},\"v2_client_id\":{\"type\":\"string\"}},\"required\":[\"client_id\"],\"additionalProperties\":false}",
             "required": true,
             "admin_form": {
               "fields": [
                 {
                   "key": "client_id",
                   "label": "Client ID",
-                  "description": "Client ID of the app you created at simkl.com/settings/developer.",
+                  "description": "Client ID of the app you created at simkl.com/settings/developer. Do not replace it while profiles are connected through it: their connections only work with this app.",
                   "control": 1,
                   "required": true
+                },
+                {
+                  "key": "v2_client_id",
+                  "label": "AUTH V2 client ID",
+                  "description": "Optional. Fill this in when the Client ID above belongs to an older AUTH V1 app, which Simkl retires around April 2027. New connections then sign in through this AUTH V2 app, and existing connections keep working until each profile reconnects.",
+                  "control": 1
                 }
               ],
               "submit_label": "Save Simkl app"
@@ -2390,7 +2396,7 @@
           "display_name": "Simkl Watch Provider",
           "summary": "Sync Silo watch history, plan-to-watch list, dropped shows, and ratings with Simkl.",
           "description_markdown": "Imports watched movies and episodes, resume progress, the plan-to-watch list, dropped shows, and movie and series ratings from Simkl, anime included. Exports watched and unwatched titles, plan-to-watch changes, dropped shows, and ratings, and forwards live playback start, pause, and stop events. A movie rating is sent once the profile has watched the movie.",
-          "setup_markdown": "Create an app at [simkl.com/settings/developer](https://simkl.com/settings/developer/) and enter its client ID in this plugin's settings. Then connect each Silo profile from its watch-provider settings: Silo shows a PIN code to enter at simkl.com/pin.",
+          "setup_markdown": "Create an app at [simkl.com/settings/developer](https://simkl.com/settings/developer/), choosing the **TV, devices \u0026 command line** type, and enter its client ID in this plugin's settings. Then connect each Silo profile from its watch-provider settings: Silo shows a code to enter at simkl.com/pin. If profiles already connected through an older AUTH V1 app, keep its client ID and enter the new app's client ID as the AUTH V2 client ID instead.",
           "homepage_url": "https://simkl.com",
           "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
           "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/issues",
@@ -2401,16 +2407,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.2.0/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/plugin-linux-arm64"
         }
       }
     },
