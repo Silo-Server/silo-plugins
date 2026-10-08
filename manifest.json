@@ -2018,7 +2018,7 @@
     {
       "manifest": {
         "plugin_id": "silo.tvdb",
-        "version": "1.4.0",
+        "version": "1.4.1",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -2061,42 +2061,6 @@
             }
           }
         ],
-        "global_config_schema": [
-          {
-            "key": "metadata_proxy",
-            "title": "Silo Metadata Proxy",
-            "description": "Route TVDB requests through the shared Silo metadata proxy instead of calling TVDB directly. The proxy caches responses for every Silo installation, so scans hit TVDB far less often. Turn it off to call TVDB directly.",
-            "json_schema": "{\"type\":\"object\",\"properties\":{\"enabled\":{\"type\":\"boolean\"},\"url\":{\"type\":\"string\"}},\"additionalProperties\":false}",
-            "admin_form": {
-              "fields": [
-                {
-                  "key": "enabled",
-                  "label": "Use Silo metadata proxy",
-                  "description": "When on, this plugin sends TVDB requests to the proxy URL below instead of api4.thetvdb.com.",
-                  "control": 5,
-                  "default_value": false
-                },
-                {
-                  "key": "url",
-                  "label": "Proxy URL",
-                  "description": "Base URL of the metadata proxy. The official proxy is https://metadata.siloserver.org.",
-                  "control": 1,
-                  "placeholder": "https://metadata.siloserver.org",
-                  "default_value": "https://metadata.siloserver.org",
-                  "show_when": [
-                    {
-                      "field": "enabled",
-                      "equals": [
-                        "true"
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "submit_label": "Save proxy settings"
-            }
-          }
-        ],
         "presentation": {
           "display_name": "TVDB Metadata",
           "summary": "Fetch series, season, episode, and artwork metadata from TheTVDB.",
@@ -2112,16 +2076,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.0/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.0/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.0/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.0/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.4.1/plugin-linux-arm64"
         }
       }
     },
