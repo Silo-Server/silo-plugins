@@ -2274,7 +2274,7 @@
     {
       "manifest": {
         "plugin_id": "silo.watchprovider.simkl",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -2371,16 +2371,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.3.0/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.0/plugin-linux-arm64"
         }
       }
     },
