@@ -1962,7 +1962,7 @@
     {
       "manifest": {
         "plugin_id": "silo.tmdb",
-        "version": "1.2.27",
+        "version": "1.2.28",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -2021,16 +2021,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.27/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.28/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.27/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.28/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.27/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.28/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.27/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.28/plugin-linux-arm64"
         }
       }
     },
