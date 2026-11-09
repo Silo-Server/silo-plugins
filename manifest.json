@@ -2305,7 +2305,7 @@
     {
       "manifest": {
         "plugin_id": "silo.watchprovider.simkl",
-        "version": "0.4.1",
+        "version": "0.5.0",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -2355,6 +2355,15 @@
               "sync_dropped": true,
               "rating_export_requires_watched": [
                 1
+              ],
+              "connection_settings": [
+                {
+                  "key": "track_rewatches",
+                  "label": "Log rewatches",
+                  "description": "Send another play of a title you already watched to Simkl as a rewatch. Applies to exported plays and finished playback. Needs Simkl PRO or VIP; a free account records nothing extra.",
+                  "type": 1,
+                  "default_value": false
+                }
               ]
             }
           }
@@ -2402,16 +2411,16 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.1/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.1/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.1/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.4.1/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.0/plugin-linux-arm64"
         }
       }
     }
