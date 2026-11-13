@@ -64,13 +64,22 @@ release needs the `gh` CLI on `PATH`:
 ```sh
 go run ./cmd/update-catalog \
   -repo Silo-Server/silo-plugin-metadata-tmdb \
-  -tag v1.2.30
+  -tag vX.Y.Z
 ```
 
-Use a tag newer than the listed version. The listed version does nothing and
-an older one is refused; to rebuild an entry from an older or equal release
-while testing, add `-allow-rollback` and pass `-manifest` with a copy of the
-catalog so the real one is not rewritten.
+`vX.Y.Z` must be a published release newer than the listed version. The listed
+version does nothing and an older one is refused. To try the tool against a
+release the catalog already lists, rebuild that entry in a copy of the catalog:
+
+```sh
+catalog_copy="$(mktemp)"
+cp manifest.json "$catalog_copy"
+go run ./cmd/update-catalog \
+  -repo Silo-Server/silo-plugin-metadata-tmdb \
+  -tag v1.2.29 \
+  -allow-rollback \
+  -manifest "$catalog_copy"
+```
 
 For a private source repository, provide `GITHUB_TOKEN` through your normal
 secret-injection workflow. The command rewrites `manifest.json`; review or
