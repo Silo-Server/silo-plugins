@@ -19,8 +19,10 @@ type Asset struct {
 }
 
 type Release struct {
-	TagName string  `json:"tag_name"`
-	Assets  []Asset `json:"assets"`
+	TagName    string  `json:"tag_name"`
+	Draft      bool    `json:"draft"`
+	Prerelease bool    `json:"prerelease"`
+	Assets     []Asset `json:"assets"`
 }
 
 type PlatformBinary struct {
@@ -31,6 +33,7 @@ type CatalogPackage struct {
 	Manifest     *pluginv1.PluginManifest  `json:"manifest"`
 	RepoURL      string                    `json:"repo_url,omitempty"`
 	ChecksumsURL string                    `json:"checksums_url,omitempty"`
+	BundleURL    string                    `json:"bundle_url,omitempty"`
 	Binaries     map[string]PlatformBinary `json:"binaries,omitempty"`
 }
 
@@ -69,22 +72,16 @@ func BuildPackageFromRelease(repo string, source *SourceManifest, release Releas
 		return CatalogPackage{}, fmt.Errorf("release tag_name is required")
 	}
 
-	checksumsURL := ""
-	binaries := map[string]PlatformBinary{}
-	for _, asset := range release.Assets {
-		switch {
-		case asset.Name == "checksums.txt":
-			checksumsURL = asset.BrowserDownloadURL
-		case strings.HasPrefix(asset.Name, "plugin-"):
-			platform, ok := platformKeyFromAssetName(asset.Name)
-			if !ok {
-				continue
-			}
-			binaries[platform] = PlatformBinary{URL: asset.BrowserDownloadURL}
-		}
+	assets, err := ParseReleaseAssets(repo, release)
+	if err != nil {
+		return CatalogPackage{}, err
+	}
+	binaries := make(map[string]PlatformBinary, len(assets.Binaries))
+	for platform, url := range assets.Binaries {
+		binaries[platform] = PlatformBinary{URL: url}
 	}
 
-	if checksumsURL == "" {
+	if assets.ChecksumsURL == "" {
 		return CatalogPackage{}, fmt.Errorf("release %q is missing checksums.txt", release.TagName)
 	}
 	if len(binaries) == 0 {
@@ -106,7 +103,8 @@ func BuildPackageFromRelease(repo string, source *SourceManifest, release Releas
 	return CatalogPackage{
 		Manifest:     manifest,
 		RepoURL:      repositoryURL,
-		ChecksumsURL: checksumsURL,
+		ChecksumsURL: assets.ChecksumsURL,
+		BundleURL:    assets.BundleURL,
 		Binaries:     binaries,
 	}, nil
 }
