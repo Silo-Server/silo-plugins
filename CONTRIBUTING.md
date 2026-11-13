@@ -36,10 +36,18 @@ gofmt -l .
 none of the Go files touched by your change may appear in the output; do not add
 to the output, and report what remains. For catalog output changes, inspect the
 complete `manifest.json` diff and verify repository URLs, versions, platforms,
-the checksum URL, capabilities, and presentation metadata against the source
-release. The catalog stores a URL for `checksums.txt`, not the checksum values
-themselves, so also confirm that the release asset exists and covers every
-published binary.
+the checksum URL, the bundle URL when the release is signed, capabilities, and
+presentation metadata against the source release. The catalog stores a URL for
+`checksums.txt`, not the checksum values themselves, so also confirm that the
+release asset exists and covers every published binary.
+
+Changes to `update-catalog`'s refusal rules (input validation, the plugin
+table, version order, asset URLs, the commit binding, or signature policy)
+need a unit test for each refusal in `catalog/catalog_test.go`.
+
+A change to the official plugin table in `catalog/official.go` needs the same
+change in Silo server's copy. Verify each entry's repository against the
+`plugin_id` in that repository's `manifest.json`.
 
 ## Open the pull request
 
