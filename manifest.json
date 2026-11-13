@@ -3,7 +3,7 @@
     {
       "manifest": {
         "plugin_id": "silo.audiobook-metadata",
-        "version": "0.1.6",
+        "version": "0.1.7",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
@@ -116,16 +116,17 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.6/checksums.txt",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.7/checksums.txt",
+      "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.7/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.6/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.7/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.6/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.7/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.6/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.7/plugin-linux-arm64"
         }
       }
     },
