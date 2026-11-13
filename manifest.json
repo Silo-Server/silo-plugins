@@ -357,7 +357,7 @@
                   "label": "User filter",
                   "description": "LDAP filter that finds one person. {username} is replaced with the escaped sign-in name. Leave blank to use the directory type's default.",
                   "control": 1,
-                  "placeholder": "(&(objectClass=person)(uid={username}))"
+                  "placeholder": "(\u0026(objectClass=person)(uid={username}))"
                 },
                 {
                   "key": "username_attribute",
@@ -489,7 +489,7 @@
                   "label": "Group filter",
                   "description": "{dn} is replaced with the person's escaped DN and {username} with their escaped username. Leave blank to use the directory type's default.",
                   "control": 1,
-                  "placeholder": "(&(objectClass=groupOfNames)(member={dn}))",
+                  "placeholder": "(\u0026(objectClass=groupOfNames)(member={dn}))",
                   "show_when": [
                     {
                       "field": "source",
@@ -1007,7 +1007,7 @@
           }
         ],
         "presentation": {
-          "display_name": "Sonarr & Radarr Autoscan",
+          "display_name": "Sonarr \u0026 Radarr Autoscan",
           "summary": "Detect imports and renames in Sonarr or Radarr and queue targeted Silo scans.",
           "description_markdown": "Polls recent Sonarr and Radarr history for completed imports and file renames. It returns the affected paths to Silo so the host can apply path rewrites, deduplicate work, and scan only the relevant library locations.",
           "setup_markdown": "Install the plugin, then create an Autoscan source in Silo using a Sonarr or Radarr connection. Configure any path rewrites on the Silo source. The plugin stores no credentials and has no separate global configuration.",
@@ -1197,7 +1197,7 @@
             "type": "metadata_provider.v1",
             "id": "manga-metadata",
             "display_name": "Manga Metadata (MangaBaka)",
-            "description": "Rich manga metadata from MangaBaka \u2014 covers, synopsis, authors, genres, publication status, publisher, and cross-provider IDs \u2014 aggregating AniList, MyAnimeList, MangaUpdates, Kitsu, Anime-Planet, and Shikimori, with a MangaDex deep fallback and AniList banner backdrops. Optional offline mode downloads MangaBaka's database for fast, rate-limit-free matching on large libraries.",
+            "description": "Rich manga metadata from MangaBaka — covers, synopsis, authors, genres, publication status, publisher, and cross-provider IDs — aggregating AniList, MyAnimeList, MangaUpdates, Kitsu, Anime-Planet, and Shikimori, with a MangaDex deep fallback and AniList banner backdrops. Optional offline mode downloads MangaBaka's database for fast, rate-limit-free matching on large libraries.",
             "metadata": {
               "default_priority": {
                 "manga": 1
@@ -1337,7 +1337,7 @@
             "type": "metadata_provider.v1",
             "id": "mdblist",
             "display_name": "MDBList",
-            "description": "IMDb, TMDB and Rotten Tomatoes ratings, MDBList's own score, age rating, certification, and missing basics. Enrichment only \u2014 never identifies an item.",
+            "description": "IMDb, TMDB and Rotten Tomatoes ratings, MDBList's own score, age rating, certification, and missing basics. Enrichment only — never identifies an item.",
             "metadata": {
               "bulk_lookup_limit": 100,
               "default_priority": {
@@ -1397,7 +1397,7 @@
         "presentation": {
           "display_name": "MDBList Ratings",
           "summary": "IMDb, TMDB and Rotten Tomatoes ratings, MDBList's own score, age ratings, and missing basics from MDBList.",
-          "description_markdown": "Fills in what other metadata providers leave empty: IMDb and TMDB ratings, the Rotten Tomatoes critic and audience scores, MDBList's own score, the Common Sense age rating, the release certification, and basics such as year, release date, runtime, language, genres, and show status.\n\nSilo shows the Rotten Tomatoes scores and the MDBList score only after an administrator turns them on under Settings > Library & Metadata > Ratings.\n\nThis provider never identifies an item. It looks up titles that another provider has already matched, using the IMDb or TMDB ID that provider resolved, so it must sit *below* a primary metadata provider such as TMDB in a library's provider chain.",
+          "description_markdown": "Fills in what other metadata providers leave empty: IMDb and TMDB ratings, the Rotten Tomatoes critic and audience scores, MDBList's own score, the Common Sense age rating, the release certification, and basics such as year, release date, runtime, language, genres, and show status.\n\nSilo shows the Rotten Tomatoes scores and the MDBList score only after an administrator turns them on under Settings \u003e Library \u0026 Metadata \u003e Ratings.\n\nThis provider never identifies an item. It looks up titles that another provider has already matched, using the IMDb or TMDB ID that provider resolved, so it must sit *below* a primary metadata provider such as TMDB in a library's provider chain.",
           "setup_markdown": "Create a free API key in your MDBList preferences, add it below, then add **MDBList** to a library's metadata provider chain at a lower priority than your primary provider.\n\nThe free tier allows 1000 requests per day. Lookups that arrive together are sent as one batch request, and Silo's hourly Bulk Metadata Enrichment task sends up to 100 titles at a time. When the quota runs out the plugin pauses until it resets and tells Silo so, and Silo looks those titles up again later; it never fails a metadata refresh.",
           "homepage_url": "https://mdblist.com",
           "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist",
@@ -1447,7 +1447,7 @@
             "type": "metadata_provider.v1",
             "id": "sportarr",
             "display_name": "Sportarr",
-            "description": "Sportarr \u2014 metadata for sports leagues as TV shows.",
+            "description": "Sportarr — metadata for sports leagues as TV shows.",
             "metadata": {
               "default_enabled": false,
               "default_priority": {
@@ -1616,7 +1616,7 @@
             "type": "metadata_provider.v1",
             "id": "tmdb",
             "display_name": "TMDB",
-            "description": "The Movie Database \u2014 metadata for movies and TV series.",
+            "description": "The Movie Database — metadata for movies and TV series.",
             "metadata": {
               "default_priority": {
                 "episode": 3,
@@ -1692,7 +1692,7 @@
             "type": "metadata_provider.v1",
             "id": "tvdb",
             "display_name": "TVDB",
-            "description": "TheTVDB \u2014 metadata for TV series.",
+            "description": "TheTVDB — metadata for TV series.",
             "metadata": {
               "default_priority": {
                 "episode": 2,
@@ -2037,7 +2037,7 @@
           "display_name": "Simkl Watch Provider",
           "summary": "Sync Silo watch history, plan-to-watch list, dropped shows, and ratings with Simkl.",
           "description_markdown": "Imports watched movies and episodes, resume progress, the plan-to-watch list, dropped shows, and movie and series ratings from Simkl, anime included. Exports watched and unwatched titles, plan-to-watch changes, dropped shows, and ratings, and forwards live playback start, pause, and stop events. A movie rating is sent once the profile has watched the movie.",
-          "setup_markdown": "Create an app at [simkl.com/settings/developer](https://simkl.com/settings/developer/), choosing the **TV, devices & command line** type, and enter its client ID in this plugin's settings. Then connect each Silo profile from its watch-provider settings: Silo shows a code to enter at simkl.com/pin. If profiles already connected through an older AUTH V1 app, keep its client ID and enter the new app's client ID as the AUTH V2 client ID instead.",
+          "setup_markdown": "Create an app at [simkl.com/settings/developer](https://simkl.com/settings/developer/), choosing the **TV, devices \u0026 command line** type, and enter its client ID in this plugin's settings. Then connect each Silo profile from its watch-provider settings: Silo shows a code to enter at simkl.com/pin. If profiles already connected through an older AUTH V1 app, keep its client ID and enter the new app's client ID as the AUTH V2 client ID instead.",
           "homepage_url": "https://simkl.com",
           "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl",
           "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/issues",
