@@ -476,6 +476,8 @@ func TestValidateInputs(t *testing.T) {
 		{"encoded slash", repo, "v1.2.3-%2F", true},
 		{"no v prefix", repo, "1.2.3", true},
 		{"leading zero", repo, "v01.2.3", true},
+		{"leading zero in suffix", repo, "v1.2.3-01", true},
+		{"empty suffix identifier", repo, "v1.2.3-a..b", true},
 		{"missing patch", repo, "v1.2", true},
 		{"empty tag", repo, "", true},
 		{"three path segments", "Silo-Server/silo-plugin-metadata-tmdb/x", "v1.2.3", true},

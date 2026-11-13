@@ -64,12 +64,13 @@ release needs the `gh` CLI on `PATH`:
 ```sh
 go run ./cmd/update-catalog \
   -repo Silo-Server/silo-plugin-metadata-tmdb \
-  -tag v1.2.23
+  -tag v1.2.30
 ```
 
-A tag at or below the listed version does nothing or is refused; add
-`-allow-rollback` to rewrite the entry from an older or equal release, or pass
-`-manifest` with a copy of the catalog.
+Use a tag newer than the listed version. The listed version does nothing and
+an older one is refused; to rebuild an entry from an older or equal release
+while testing, add `-allow-rollback` and pass `-manifest` with a copy of the
+catalog so the real one is not rewritten.
 
 For a private source repository, provide `GITHUB_TOKEN` through your normal
 secret-injection workflow. The command rewrites `manifest.json`; review or

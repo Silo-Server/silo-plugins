@@ -23,7 +23,9 @@ func ValidateInputs(repo, tag string) error {
 	if !repoPattern.MatchString(repo) {
 		return fmt.Errorf("repository %q is not in owner/name form", repo)
 	}
-	if !tagPattern.MatchString(tag) {
+	// The pattern keeps URL metacharacters out; semver.IsValid also rejects
+	// suffixes CheckVersion could not order, such as a leading-zero number.
+	if !tagPattern.MatchString(tag) || !semver.IsValid(tag) {
 		return fmt.Errorf("tag %q is not a v<major>.<minor>.<patch> release tag", tag)
 	}
 	return nil
