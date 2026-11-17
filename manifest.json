@@ -1267,11 +1267,19 @@
     {
       "manifest": {
         "plugin_id": "silo.manga-metadata",
-        "version": "0.1.2",
+        "version": "0.1.3",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "freebsd",
+            "arch": "amd64"
+          },
+          {
+            "os": "freebsd",
             "arch": "arm64"
           },
           {
@@ -1390,17 +1398,23 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.2/checksums.txt",
-      "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.2/plugin.sigstore.json",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/checksums.txt",
+      "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-darwin-arm64"
+        },
+        "freebsd/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-amd64"
+        },
+        "freebsd/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-arm64"
         }
       }
     },
