@@ -1531,11 +1531,19 @@
     {
       "manifest": {
         "plugin_id": "silo.sportarr",
-        "version": "1.0.4",
+        "version": "1.0.5",
         "silo_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "freebsd",
+            "arch": "amd64"
+          },
+          {
+            "os": "freebsd",
             "arch": "arm64"
           },
           {
@@ -1604,17 +1612,23 @@
         }
       },
       "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.4/checksums.txt",
-      "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.4/plugin.sigstore.json",
+      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/checksums.txt",
+      "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.4/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-darwin-arm64"
+        },
+        "freebsd/amd64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-amd64"
+        },
+        "freebsd/arm64": {
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.4/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.4/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-arm64"
         }
       }
     },
