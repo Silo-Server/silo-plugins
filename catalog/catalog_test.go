@@ -557,13 +557,20 @@ func TestParseReleaseAssets(t *testing.T) {
 		{"binary under another name", Asset{Name: "plugin-linux-arm64", BrowserDownloadURL: base + "plugin-linux-amd64"}},
 		{"plain-http checksums", Asset{Name: "checksums.txt", BrowserDownloadURL: "http://github.com/" + repo + "/releases/download/v1.2.3/checksums.txt"}},
 		{"bundle in another repository", Asset{Name: BundleAssetName, BrowserDownloadURL: "https://github.com/attacker/evil/releases/download/v1.2.3/" + BundleAssetName}},
-		{"duplicate binary", valid[0]},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			release := Release{TagName: "v1.2.3", Assets: append(slices.Clone(valid[:1]), tt.asset)}
 			if _, err := ParseReleaseAssets(repo, release); err == nil {
 				t.Fatalf("ParseReleaseAssets() accepted %+v", tt.asset)
+			}
+		})
+	}
+	for _, asset := range valid[:3] {
+		t.Run("duplicate "+asset.Name, func(t *testing.T) {
+			release := Release{TagName: "v1.2.3", Assets: append(slices.Clone(valid), asset)}
+			if _, err := ParseReleaseAssets(repo, release); err == nil {
+				t.Fatalf("accepted duplicate asset %s", asset.Name)
 			}
 		})
 	}

@@ -62,7 +62,8 @@ continue to discover the current version through `manifest.json`.
 
 To withdraw a release, run the updater with `-repo`, `-tag` and `-withdraw`.
 Review the resulting entry in the `withdrawals` array in `manifest.json`.
-Servers with withdrawal support skip that version for new installations and
+Commit that file on a branch and open a pull request against `main`. Merging
+the pull request publishes the withdrawal. Servers with withdrawal support skip that version for new installations and
 replacements, including when a declaration pins it. Existing installations
 keep their stored archive. Publish a supported release or explicitly roll
 back the discovery entry to a supported version if the withdrawal affects
