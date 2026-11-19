@@ -1,0 +1,143 @@
+{
+  "manifest": {
+    "plugin_id": "silo.ebook-metadata",
+    "version": "0.1.2",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "metadata_provider.v1",
+        "id": "ebook-metadata",
+        "display_name": "Ebook Metadata",
+        "description": "Metadata provider for ebook items. Wraps OpenLibrary, Google Books, ISBNdb, Hardcover, Goodreads, Amazon, Anna's Archive, Project Gutenberg, BookBrainz, FantasticFiction, ISFDB, LibraryThing, Internet Archive, WorldCat, and Douban.",
+        "metadata": {
+          "default_priority": {
+            "ebook": 2
+          }
+        }
+      }
+    ],
+    "global_config_schema": [
+      {
+        "key": "enabled_sources",
+        "title": "Enabled sources",
+        "description": "Comma-separated source IDs to search. Empty uses the default source set.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Source IDs",
+              "control": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "google_books_api_key",
+        "title": "Google Books API key",
+        "description": "Optional API key for Google Books.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "API key",
+              "control": 3
+            }
+          ]
+        }
+      },
+      {
+        "key": "isbndb_api_key",
+        "title": "ISBNdb API key",
+        "description": "Optional API key for ISBNdb.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "API key",
+              "control": 3
+            }
+          ]
+        }
+      },
+      {
+        "key": "hardcover_api_key",
+        "title": "Hardcover API key",
+        "description": "Optional API key for Hardcover.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "API key",
+              "control": 3
+            }
+          ]
+        }
+      },
+      {
+        "key": "default_region",
+        "title": "Default region",
+        "description": "Optional region hint used by sources that support regional catalogs.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Region code",
+              "control": 1
+            }
+          ]
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "Ebook Metadata",
+      "summary": "Enrich ebook libraries with book metadata from public and credentialed sources.",
+      "description_markdown": "Searches OpenLibrary, Google Books, ISBNdb, Hardcover, Goodreads, Amazon, Anna's Archive, Project Gutenberg, BookBrainz, FantasticFiction, ISFDB, LibraryThing, Internet Archive, WorldCat, and Douban. Results include book identity, descriptions, contributors, and artwork.",
+      "setup_markdown": "Install the plugin and add **Ebook Metadata** to an ebook library's metadata provider chain. Optionally limit `enabled_sources`, set a regional hint, or add API keys for Google Books, ISBNdb, and Hardcover. Sources that require a key are skipped until one is configured.",
+      "homepage_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "NOASSERTION"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.2/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.2/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.2/plugin-darwin-arm64",
+      "checksum": "fed2bab01908353587e5588b968cd2104711157c46b57e44a66d4c70af73f907"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.2/plugin-linux-amd64",
+      "checksum": "59282ff0a889003fc432d8c601d24a36daed353e3dd0cd9cc653a71ed8226799"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.2/plugin-linux-arm64",
+      "checksum": "407d9524eca1ffe6f725d33dff4f1c9e04c7d660c3d9b3f1fb3da20283ef2ab4"
+    }
+  },
+  "tag": "v0.1.2",
+  "source_commit": "e6f1257c24be7ce71f4ead9a29561cc7e657af98"
+}

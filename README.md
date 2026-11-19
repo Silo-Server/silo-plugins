@@ -22,7 +22,8 @@ call `repository_dispatch` on `Silo-Server/silo-plugins`.
   `manifest.json` names that ID. Adding a first-party plugin means adding it
   there, and to the matching table in Silo server.
 - The version is newer than the plugin's listed version. Re-running for the
-  listed version does nothing and succeeds. A deliberate rollback needs the
+  listed version verifies it again and succeeds if the release is identical.
+  A deliberate rollback needs the
   `allow_rollback` input of a manual `workflow_dispatch` run; a
   `repository_dispatch` cannot set it.
 - The release is published for exactly that tag and is neither a draft nor a
@@ -37,8 +38,9 @@ signature names for a signed release, or the commit the tag points at
 A signed release also carries `plugin.sigstore.json`: a Sigstore bundle with
 one SLSA provenance attestation covering every `plugin-<os>-<arch>` binary,
 produced by the shared `plugin-release.yml` workflow in `Silo-Server/.github`.
-The catalog entry then gains a package-level `bundle_url` beside
-`checksums_url`. Before writing the entry, `update-catalog` checks each binary
+The catalog entry records the `bundle_url` and each binary's SHA-256 digest.
+`update-catalog` compares each downloaded binary with `checksums.txt` and checks
+its attestation
 with `gh attestation verify`, requiring the certificate identity
 `https://github.com/Silo-Server/.github/.github/workflows/plugin-release.yml@refs/heads/main`,
 the issuer `https://token.actions.githubusercontent.com`, the plugin's bound
@@ -51,6 +53,20 @@ an unsigned release of that plugin is refused.
 The workflow has no concurrency group. Runs race on the push, and each retry
 rebuilds the entry on the current `main`, so a duplicate run is a no-op and an
 older release that loses the race to a newer one is refused.
+
+The same commit writes the current `manifest.json` entry and
+`releases/<plugin-id>/<version>.json`. The descriptor records the repository,
+tag, source commit, platform digests and bundle URL. An attempt to change a
+published descriptor fails, including during a rollback. Older servers can
+continue to discover the current version through `manifest.json`.
+
+To withdraw a release, run the updater with `-repo`, `-tag` and `-withdraw`.
+Review the resulting entry in the `withdrawals` array in `manifest.json`.
+Servers with withdrawal support skip that version for new installations and
+replacements, including when a declaration pins it. Existing installations
+keep their stored archive. Publish a supported release or explicitly roll
+back the discovery entry to a supported version if the withdrawal affects
+the current release.
 
 `silo-plugins` uses `CATALOG_PUSH_TOKEN` to push catalog updates. Reading a
 plugin's release metadata and its tagged `manifest.json` needs no extra
@@ -67,23 +83,45 @@ go run ./cmd/update-catalog \
   -tag vX.Y.Z
 ```
 
-`vX.Y.Z` must be a published release newer than the listed version. The listed
-version does nothing and an older one is refused. To try the tool against a
-release the catalog already lists, rebuild that entry in a copy of the catalog:
+`vX.Y.Z` must be a published release at least as recent as the listed version.
+To regenerate a historical descriptor in a copy of the catalog, use
+`-history-only`:
 
 ```sh
-catalog_copy="$(mktemp)"
-cp manifest.json "$catalog_copy"
+catalog_copy="$(mktemp -d)"
+cp manifest.json "$catalog_copy/manifest.json"
 go run ./cmd/update-catalog \
-  -repo Silo-Server/silo-plugin-metadata-tmdb \
-  -tag v1.2.29 \
-  -allow-rollback \
-  -manifest "$catalog_copy"
+  -repo Silo-Server/silo-plugin-auth-oidc \
+  -tag v0.1.1 \
+  -history-only \
+  -manifest "$catalog_copy/manifest.json"
 ```
 
 For a private source repository, provide `GITHUB_TOKEN` through your normal
-secret-injection workflow. The command rewrites `manifest.json`; review or
-discard that diff after the check.
+secret injection workflow.
+
+## History coverage
+
+The initial backfill covers the 32 published releases across 14 official
+plugin repositories that carried a verified signature bundle on November 19,
+2026. It includes OIDC `0.1.1` and `0.1.2`. OIDC `0.1.0` predates release
+signing. The archived Trakt repository had no eligible release.
+
+To reproduce these descriptors, read each descriptor's repository and tag
+and run `-history-only` against a copy of the catalog:
+
+```sh
+catalog_copy="$(mktemp -d)"
+cp manifest.json "$catalog_copy/manifest.json"
+go build -o "$catalog_copy/update-catalog" ./cmd/update-catalog
+jq -r '[(.repo_url | ltrimstr("https://github.com/")), .tag] | @tsv' \
+  releases/*/*.json | sort -u |
+  while read -r repo tag; do
+    "$catalog_copy/update-catalog" -history-only -repo "$repo" -tag "$tag" \
+      -manifest "$catalog_copy/manifest.json" || exit 1
+  done
+diff -r releases "$catalog_copy/releases"
+```
 
 ## Development
 

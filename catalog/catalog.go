@@ -26,7 +26,8 @@ type Release struct {
 }
 
 type PlatformBinary struct {
-	URL string `json:"url"`
+	URL      string `json:"url"`
+	Checksum string `json:"checksum,omitempty"`
 }
 
 type CatalogPackage struct {
@@ -35,10 +36,18 @@ type CatalogPackage struct {
 	ChecksumsURL string                    `json:"checksums_url,omitempty"`
 	BundleURL    string                    `json:"bundle_url,omitempty"`
 	Binaries     map[string]PlatformBinary `json:"binaries,omitempty"`
+	Tag          string                    `json:"tag,omitempty"`
+	SourceCommit string                    `json:"source_commit,omitempty"`
 }
 
 type RepositoryIndex struct {
-	Plugins []CatalogPackage `json:"plugins"`
+	Plugins     []CatalogPackage `json:"plugins"`
+	Withdrawals []Withdrawal     `json:"withdrawals,omitempty"`
+}
+
+type Withdrawal struct {
+	PluginID string `json:"plugin_id"`
+	Version  string `json:"version"`
 }
 
 func DecodeSourceManifest(data []byte) (*SourceManifest, error) {

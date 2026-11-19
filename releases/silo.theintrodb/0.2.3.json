@@ -1,0 +1,100 @@
+{
+  "manifest": {
+    "plugin_id": "silo.theintrodb",
+    "version": "0.2.3",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "marker_provider.v1",
+        "id": "introdb",
+        "display_name": "TheIntroDB",
+        "description": "Fetches and submits intro, credits, recap, and preview markers using TheIntroDB.",
+        "metadata": {
+          "default_fetch_priority": 100
+        }
+      }
+    ],
+    "global_config_schema": [
+      {
+        "key": "account",
+        "title": "TheIntroDB Account",
+        "description": "Optional theintrodb.org API key used for submissions, account statistics, and a larger lookup budget.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "description": "API key from your theintrodb.org account.",
+              "control": 3,
+              "secret": true
+            }
+          ],
+          "submit_label": "Save TheIntroDB account"
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "TheIntroDB Markers",
+      "summary": "Fetch and submit intro, credits, recap, and preview markers through TheIntroDB.",
+      "description_markdown": "Adds community-maintained playback markers from TheIntroDB to movies and TV episodes. It can fetch markers without an account and can submit corrections or new markers when an API key is configured.",
+      "setup_markdown": "Install the plugin and enable **TheIntroDB** as a marker provider. Fetching works without configuration. To submit markers or view account statistics, add an API key from your account at **theintrodb.org**. IntroDB (introdb.app) is a different service, and its keys are rejected with `401 Invalid or expired token`. A key also raises the daily lookup budget, which helps large libraries. Submissions are credited to the account that owns the key.",
+      "homepage_url": "https://theintrodb.org",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-only"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-darwin-arm64",
+      "checksum": "1bc9f65609df52e3fdfa9a9b51f82f6a938a2777110dc9b28e4795dad20f6f71"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-freebsd-amd64",
+      "checksum": "c48e90d35953b78c19b9a10bbd09fa69064ac6d54aae194b15944125adbcdc7a"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-freebsd-arm64",
+      "checksum": "83afad8a6891b59df43dedc35efc5838e5e9108e9bbd415105cf85e47237b264"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-linux-amd64",
+      "checksum": "995c3cff368cf4e7770268f2799f31fca18493ad6a5af2ae15d080e5023f3573"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-linux-arm64",
+      "checksum": "f8ec45669a5eaaddc77d0fe4d45a0a1f1c723276eb7bfc3625a61b76e7e4ffbe"
+    }
+  },
+  "tag": "v0.2.3",
+  "source_commit": "dfdec5b35fa342e882bb615532ec3081916234ee"
+}

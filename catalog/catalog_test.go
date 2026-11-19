@@ -3,6 +3,7 @@ package catalog
 import (
 	"encoding/json"
 	"slices"
+	"strings"
 	"testing"
 
 	pluginv1 "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginproto/silo/plugin/v1"
@@ -556,6 +557,7 @@ func TestParseReleaseAssets(t *testing.T) {
 		{"binary under another name", Asset{Name: "plugin-linux-arm64", BrowserDownloadURL: base + "plugin-linux-amd64"}},
 		{"plain-http checksums", Asset{Name: "checksums.txt", BrowserDownloadURL: "http://github.com/" + repo + "/releases/download/v1.2.3/checksums.txt"}},
 		{"bundle in another repository", Asset{Name: BundleAssetName, BrowserDownloadURL: "https://github.com/attacker/evil/releases/download/v1.2.3/" + BundleAssetName}},
+		{"duplicate binary", valid[0]},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -594,5 +596,33 @@ func TestCheckVersion(t *testing.T) {
 				t.Fatalf("CheckVersion() = %v, %v; want listed %v, wantErr %v", listed, err, tt.wantListed, tt.wantErr)
 			}
 		})
+	}
+}
+
+func TestCheckReleaseDigest(t *testing.T) {
+	const asset = "plugin-linux-amd64"
+	digest := strings.Repeat("a", 64)
+	for _, tc := range []struct {
+		name, checksums string
+		wantErr         bool
+	}{
+		{name: "matching", checksums: digest + " *" + asset + "\n"},
+		{name: "missing", checksums: digest + " plugin-linux-arm64\n", wantErr: true},
+		{name: "mismatch", checksums: strings.Repeat("0", 64) + " " + asset + "\n", wantErr: true},
+		{name: "duplicate", checksums: strings.Repeat(digest+" "+asset+"\n", 2), wantErr: true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if err := CheckReleaseDigest(tc.checksums, asset, digest); (err != nil) != tc.wantErr {
+				t.Fatalf("CheckReleaseDigest() = %v, want error %v", err, tc.wantErr)
+			}
+		})
+	}
+}
+
+func TestWithdrawReleaseKeepsOtherReleasesAvailable(t *testing.T) {
+	index := WithdrawRelease(RepositoryIndex{}, "silo.auth.oidc", "0.1.1")
+	index = WithdrawRelease(index, "silo.auth.oidc", "0.1.1")
+	if len(index.Withdrawals) != 1 || !index.IsWithdrawn("silo.auth.oidc", "0.1.1") || index.IsWithdrawn("silo.auth.oidc", "0.1.2") {
+		t.Fatalf("unexpected withdrawal set: %+v", index.Withdrawals)
 	}
 }

@@ -1,0 +1,161 @@
+{
+  "manifest": {
+    "plugin_id": "silo.manga-metadata",
+    "version": "0.1.3",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "metadata_provider.v1",
+        "id": "manga-metadata",
+        "display_name": "Manga Metadata (MangaBaka)",
+        "description": "Rich manga metadata from MangaBaka — covers, synopsis, authors, genres, publication status, publisher, and cross-provider IDs — aggregating AniList, MyAnimeList, MangaUpdates, Kitsu, Anime-Planet, and Shikimori, with a MangaDex deep fallback and AniList banner backdrops. Optional offline mode downloads MangaBaka's database for fast, rate-limit-free matching on large libraries.",
+        "metadata": {
+          "default_priority": {
+            "manga": 1
+          }
+        }
+      }
+    ],
+    "global_config_schema": [
+      {
+        "key": "enabled_sources",
+        "title": "Enabled sources",
+        "description": "Comma-separated source IDs to search (mangabaka, mangadex). Empty uses the default set.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Source IDs",
+              "control": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "enable_local_dump",
+        "title": "Use local MangaBaka dump",
+        "description": "Download MangaBaka's database (~335MB, ~1.5GB on disk) for offline, rate-limit-free matching. Recommended for large libraries. Default off.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"boolean\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Enable local dump",
+              "control": 5
+            }
+          ]
+        }
+      },
+      {
+        "key": "dump_path",
+        "title": "Dump storage path",
+        "description": "Override where the dump is stored. Default: OS cache dir. Point at a roomy volume if needed.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Path",
+              "control": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "dump_refresh_hours",
+        "title": "Dump refresh interval (hours)",
+        "description": "How often to re-download the dump. Default 168 (weekly).",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"integer\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Hours",
+              "control": 4,
+              "default_value": 168
+            }
+          ]
+        }
+      },
+      {
+        "key": "enable_anilist_banners",
+        "title": "AniList banner backdrops",
+        "description": "MangaBaka has no banner art. When on, fetch a hero backdrop from AniList by id for matched series. Default on.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"boolean\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Enable banners",
+              "control": 5,
+              "default_value": true
+            }
+          ]
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "Manga Metadata",
+      "summary": "Match manga and add rich metadata, covers, contributors, and publication details.",
+      "description_markdown": "Uses MangaBaka as the primary source, with MangaDex as a deep fallback and optional AniList banner artwork. It can also keep a local MangaBaka database for fast, rate-limit-free matching on large libraries.",
+      "setup_markdown": "Install the plugin and add **Manga Metadata** to a manga library's provider chain. The defaults use live sources. For large libraries, enable the local MangaBaka dump and ensure the configured storage path has about 1.5 GB available; the initial download is roughly 335 MB.",
+      "homepage_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-only"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-darwin-arm64",
+      "checksum": "23c6a42162be6ff2f2a6d74dd4176e8f2386b8cd62ff6fa500af24d20793922c"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-amd64",
+      "checksum": "d11567ac44fe26105f3d224076aefa9c1ddd97e9a0814be3c032e459ce955ea4"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-arm64",
+      "checksum": "b464b739a3ac29c4e8db5488be8a1f421da708f64cca13516734421e5ef43a93"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-amd64",
+      "checksum": "d280d38711eb913475d6de9cc6b57bffeccc6bf8b363e042240abe96de08084c"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-arm64",
+      "checksum": "0775bf39d1768c58d9c9d7429dde35728cf3d35c78d44331ae124db8548fa4ce"
+    }
+  },
+  "tag": "v0.1.3",
+  "source_commit": "4297926c41b78c9ada959ad71f93a37ba6657846"
+}

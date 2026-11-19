@@ -1,0 +1,131 @@
+{
+  "manifest": {
+    "plugin_id": "silo.mdblist",
+    "version": "0.5.2",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "metadata_provider.v1",
+        "id": "mdblist",
+        "display_name": "MDBList",
+        "description": "IMDb, TMDB and Rotten Tomatoes ratings, MDBList's own score, age rating, certification, and missing basics. Enrichment only — never identifies an item.",
+        "metadata": {
+          "bulk_lookup_limit": 100,
+          "default_priority": {
+            "movie": 8,
+            "series": 8
+          },
+          "lookup_provider_ids": [
+            "imdb",
+            "tmdb"
+          ],
+          "rating_sources": [
+            {
+              "id": "rt_critic",
+              "label": "Rotten Tomatoes critics",
+              "name": "RT",
+              "percent": true,
+              "scale": 100
+            },
+            {
+              "id": "rt_audience",
+              "label": "Rotten Tomatoes audience",
+              "name": "RT Audience",
+              "percent": true,
+              "scale": 100
+            },
+            {
+              "id": "mdblist",
+              "label": "MDBList score",
+              "name": "MDBList",
+              "scale": 100
+            }
+          ]
+        }
+      }
+    ],
+    "global_config_schema": [
+      {
+        "key": "account",
+        "title": "MDBList Account",
+        "description": "MDBList API key. Without it the provider stays idle and contributes nothing.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+        "required": true,
+        "admin_form": {
+          "fields": [
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "description": "Free API key from your MDBList preferences page.",
+              "control": 3,
+              "secret": true
+            }
+          ],
+          "submit_label": "Save MDBList account"
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "MDBList Ratings",
+      "summary": "IMDb, TMDB and Rotten Tomatoes ratings, MDBList's own score, age ratings, and missing basics from MDBList.",
+      "description_markdown": "Fills in what other metadata providers leave empty: IMDb and TMDB ratings, the Rotten Tomatoes critic and audience scores, MDBList's own score, the Common Sense age rating, the release certification, and basics such as year, release date, runtime, language, genres, and show status.\n\nSilo shows the Rotten Tomatoes scores and the MDBList score only after an administrator turns them on under Settings \u003e Library \u0026 Metadata \u003e Ratings.\n\nThis provider never identifies an item. It looks up titles that another provider has already matched, using the IMDb or TMDB ID that provider resolved, so it must sit *below* a primary metadata provider such as TMDB in a library's provider chain.",
+      "setup_markdown": "Create a free API key in your MDBList preferences, add it below, then add **MDBList** to a library's metadata provider chain at a lower priority than your primary provider.\n\nThe free tier allows 1000 requests per day. Lookups that arrive together are sent as one batch request, and Silo's hourly Bulk Metadata Enrichment task sends up to 100 titles at a time. When the quota runs out the plugin pauses until it resets and tells Silo so, and Silo looks those titles up again later; it never fails a metadata refresh.",
+      "homepage_url": "https://mdblist.com",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-only"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-darwin-arm64",
+      "checksum": "85e712d2978cb0c5c4dc2a418a2ee9b132ef478423c8d8139c3c4e686592a8b1"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-freebsd-amd64",
+      "checksum": "364879bb7ebcdcf70b079c6396e11850962d1e13272e0fbea7c518ccfeade759"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-freebsd-arm64",
+      "checksum": "5a4ef8cb59e7a19b7990ca42f0b7eeb03118fda748bb4db8d64bd16107c725ca"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-linux-amd64",
+      "checksum": "0b96960875193afd99868ca8c3365a4b8d84f591b8723ccaf13d7d25161e3ee6"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-linux-arm64",
+      "checksum": "eea5e49581aa6bd179636a562b569a146541963ddc2bdc65f37b5db34cdb2ed2"
+    }
+  },
+  "tag": "v0.5.2",
+  "source_commit": "f13f68e045e66a71ba7eda43668acdbeace3592d"
+}

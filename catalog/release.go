@@ -1,9 +1,12 @@
 package catalog
 
 import (
+	"cmp"
 	"fmt"
 	"net/url"
+	"path/filepath"
 	"regexp"
+	"slices"
 	"strings"
 
 	"golang.org/x/mod/semver"
@@ -44,6 +47,50 @@ func VersionFromTag(tag string) string {
 	return strings.TrimPrefix(tag, "v")
 }
 
+func ReleasePath(root, repo, tag string) (string, error) {
+	if err := ValidateInputs(repo, tag); err != nil {
+		return "", err
+	}
+	pluginID, err := OfficialPluginID(repo)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(root, "releases", pluginID, VersionFromTag(tag)+".json"), nil
+}
+
+func (index RepositoryIndex) IsWithdrawn(pluginID, version string) bool {
+	return slices.Contains(index.Withdrawals, Withdrawal{PluginID: pluginID, Version: version})
+}
+
+func WithdrawRelease(index RepositoryIndex, pluginID, version string) RepositoryIndex {
+	if index.IsWithdrawn(pluginID, version) {
+		return index
+	}
+	index.Withdrawals = append(slices.Clone(index.Withdrawals), Withdrawal{PluginID: pluginID, Version: version})
+	slices.SortFunc(index.Withdrawals, func(a, b Withdrawal) int {
+		return cmp.Or(cmp.Compare(a.PluginID, b.PluginID), cmp.Compare(a.Version, b.Version))
+	})
+	return index
+}
+
+func CheckReleaseDigest(checksums, assetName, digest string) error {
+	found := false
+	for line := range strings.SplitSeq(checksums, "\n") {
+		fields := strings.Fields(line)
+		if len(fields) != 2 || strings.TrimPrefix(fields[1], "*") != assetName {
+			continue
+		}
+		if found || !strings.EqualFold(fields[0], digest) {
+			return fmt.Errorf("checksums.txt does not uniquely match the SHA-256 digest of %s", assetName)
+		}
+		found = true
+	}
+	if !found {
+		return fmt.Errorf("checksums.txt has no entry for %s", assetName)
+	}
+	return nil
+}
+
 // FindPackage returns the catalog entry for pluginID, or nil.
 func FindPackage(index RepositoryIndex, pluginID string) *CatalogPackage {
 	for i := range index.Plugins {
@@ -58,7 +105,7 @@ func FindPackage(index RepositoryIndex, pluginID string) *CatalogPackage {
 // version, so a dispatch cannot replace the current entry with an older
 // release. alreadyListed reports a re-run for the listed version, which the
 // caller treats as a successful no-op. allowRollback, set only for a
-// deliberate manual run, accepts an older version and rewrites an equal one.
+// deliberate manual run, also accepts an older version.
 func CheckVersion(current *CatalogPackage, version string, allowRollback bool) (alreadyListed bool, err error) {
 	if current == nil || current.Manifest == nil {
 		return false, nil
@@ -120,10 +167,19 @@ func ParseReleaseAssets(repo string, release Release) (ReleaseAssets, error) {
 		}
 		switch {
 		case isBinary:
+			if _, exists := assets.Binaries[platform]; exists {
+				return ReleaseAssets{}, fmt.Errorf("duplicate release binary for %s", platform)
+			}
 			assets.Binaries[platform] = asset.BrowserDownloadURL
 		case asset.Name == BundleAssetName:
+			if assets.BundleURL != "" {
+				return ReleaseAssets{}, fmt.Errorf("duplicate release asset %s", asset.Name)
+			}
 			assets.BundleURL = asset.BrowserDownloadURL
 		default:
+			if assets.ChecksumsURL != "" {
+				return ReleaseAssets{}, fmt.Errorf("duplicate release asset %s", asset.Name)
+			}
 			assets.ChecksumsURL = asset.BrowserDownloadURL
 		}
 	}
