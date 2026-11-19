@@ -1,0 +1,101 @@
+{
+  "manifest": {
+    "plugin_id": "silo.watchprovider.mdblist",
+    "version": "0.3.1",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "watch_sync_provider.v1",
+        "id": "mdblist",
+        "display_name": "MDBList",
+        "description": "Two-way watch history, watchlist, favorites, and movie and series ratings, resume progress import, and live scrobbling for an MDBList account.",
+        "watch_sync_provider": {
+          "auth_methods": [
+            2
+          ],
+          "export_watched": true,
+          "export_unwatched": true,
+          "import_watched": true,
+          "import_progress": true,
+          "supported_media_types": [
+            1,
+            2,
+            3
+          ],
+          "external_id_namespaces": [
+            "imdb",
+            "tmdb",
+            "tvdb"
+          ],
+          "max_batch_size": 1000,
+          "import_favorites": true,
+          "export_favorites": true,
+          "remove_favorites": true,
+          "import_watchlist": true,
+          "export_watchlist": true,
+          "remove_watchlist": true,
+          "provides_watchlist_order": true,
+          "scrobble_playback": true,
+          "import_ratings": true,
+          "export_ratings": true,
+          "connection_settings": [
+            {
+              "key": "sync_favorites",
+              "label": "Sync favorites",
+              "description": "Keep this profile's favorite movies and series in a private MDBList list named Silo Favorites. The plugin creates the list in your MDBList account the first time it sends a favorite. Turn this on for every Silo server that should share favorites.",
+              "type": 1,
+              "default_value": false
+            }
+          ]
+        }
+      }
+    ],
+    "category": "Watch Providers",
+    "presentation": {
+      "display_name": "MDBList Watch Provider",
+      "summary": "Sync Silo watch history, watchlists, favorites, and ratings with MDBList.",
+      "description_markdown": "Imports and exports movie and episode watch history, imports resume progress, syncs the MDBList watchlist in its own order, can keep movie and series favorites in a private MDBList list named Silo Favorites when Sync favorites is turned on, syncs movie and series ratings in both directions, and forwards live playback start, pause, and stop events.",
+      "setup_markdown": "Each Silo profile connects with its own MDBList API key, created on the API page of your [MDBList preferences](https://mdblist.com/preferences/#api). The plugin needs no server-wide settings.\n\nMDBList's free tier allows 1,000 requests a day. The plugin paces requests to about one a second per key, and when MDBList reports the limit, Silo waits before the next sync.",
+      "homepage_url": "https://mdblist.com",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases",
+      "publisher_name": "Silo Server",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-only"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.1/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.1/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.1/plugin-darwin-arm64",
+      "checksum": "3ff8ddd5fe3118a107bb04283b799d96586709c6fac2273d646e49ca34264dcc"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.1/plugin-linux-amd64",
+      "checksum": "81d5cc9b670f2ea7bdaeb0c1c43f751ce4e45fb89d1c21ea65f300686d2505ae"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.1/plugin-linux-arm64",
+      "checksum": "662df376e23734bda72acb77942ff25697a46d14fde349d8af16ad30eeda4731"
+    }
+  },
+  "tag": "v0.3.1",
+  "source_commit": "6f6567ab13a8ed6072728b1c3a80f9980004595d"
+}

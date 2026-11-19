@@ -37,9 +37,9 @@ none of the Go files touched by your change may appear in the output; do not add
 to the output, and report what remains. For catalog output changes, inspect the
 complete `manifest.json` diff and verify repository URLs, versions, platforms,
 the checksum URL, the bundle URL when the release is signed, capabilities, and
-presentation metadata against the source release. The catalog stores a URL for
-`checksums.txt`, not the checksum values themselves, so also confirm that the
-release asset exists and covers every published binary.
+presentation metadata against the source release. Confirm that the
+`checksums.txt` asset and the frozen digest cover every published binary. Review
+the matching descriptor under `releases/` in the same change.
 
 Changes to `update-catalog`'s refusal rules (input validation, the plugin
 table, version order, asset URLs, the commit binding, or signature policy)

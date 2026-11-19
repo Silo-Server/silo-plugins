@@ -1,0 +1,77 @@
+{
+  "manifest": {
+    "plugin_id": "silo.autoscan.arr",
+    "version": "0.1.4",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      },
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "scan_source.v1",
+        "id": "arr",
+        "display_name": "Sonarr / Radarr",
+        "description": "Triggers Silo rescans from Sonarr/Radarr import and rename history."
+      }
+    ],
+    "presentation": {
+      "display_name": "Sonarr \u0026 Radarr Autoscan",
+      "summary": "Detect imports and renames in Sonarr or Radarr and queue targeted Silo scans.",
+      "description_markdown": "Polls recent Sonarr and Radarr history for completed imports and file renames. It returns the affected paths to Silo so the host can apply path rewrites, deduplicate work, and scan only the relevant library locations.",
+      "setup_markdown": "Install the plugin, then create an Autoscan source in Silo using a Sonarr or Radarr connection. Configure any path rewrites on the Silo source. The plugin stores no credentials and has no separate global configuration.",
+      "homepage_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "NOASSERTION"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-darwin-arm64",
+      "checksum": "d2c82787b49748861cc50d11afe1d931d1a4c365a207890c62a48e0c5f3d78c2"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-freebsd-amd64",
+      "checksum": "51645d4b44fc0bc786a092d2ec65145bf74bf830144efe5b687a82e6f544de80"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-freebsd-arm64",
+      "checksum": "fe1f270b438b4e343c707e09d0713a6ab9aec7c33193804c6cc89d4ed9bce2c2"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-linux-amd64",
+      "checksum": "8356a6d0a2aa5c0eeeff0329df55f152870775c9182e92d02d0634ad9bd8a15e"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-linux-arm64",
+      "checksum": "96dce4c88d5c084d9f4cc5733b408d9e014ec40708b24c38961a23551135d89a"
+    }
+  },
+  "tag": "v0.1.4",
+  "source_commit": "52c6a7fbdc320b29343b8b1af58d923fb90d7654"
+}

@@ -1,0 +1,159 @@
+{
+  "manifest": {
+    "plugin_id": "silo.ebook-metadata",
+    "version": "0.1.4",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "metadata_provider.v1",
+        "id": "ebook-metadata",
+        "display_name": "Ebook Metadata",
+        "description": "Metadata provider for ebook items. Wraps OpenLibrary, Google Books, ISBNdb, Hardcover, Goodreads, Amazon, Anna's Archive, Project Gutenberg, BookBrainz, FantasticFiction, ISFDB, LibraryThing, Internet Archive, WorldCat, and Douban.",
+        "metadata": {
+          "default_priority": {
+            "ebook": 2
+          }
+        }
+      }
+    ],
+    "global_config_schema": [
+      {
+        "key": "enabled_sources",
+        "title": "Enabled sources",
+        "description": "Comma-separated source IDs to search. Empty uses the default source set.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Source IDs",
+              "control": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "google_books_api_key",
+        "title": "Google Books API key",
+        "description": "Optional API key for Google Books.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "API key",
+              "control": 3
+            }
+          ]
+        }
+      },
+      {
+        "key": "isbndb_api_key",
+        "title": "ISBNdb API key",
+        "description": "Optional API key for ISBNdb.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "API key",
+              "control": 3
+            }
+          ]
+        }
+      },
+      {
+        "key": "hardcover_api_key",
+        "title": "Hardcover API key",
+        "description": "Optional API key for Hardcover.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "API key",
+              "control": 3
+            }
+          ]
+        }
+      },
+      {
+        "key": "default_region",
+        "title": "Default region",
+        "description": "Optional region hint used by sources that support regional catalogs.",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}}}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "value",
+              "label": "Region code",
+              "control": 1
+            }
+          ]
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "Ebook Metadata",
+      "summary": "Enrich ebook libraries with book metadata from public and credentialed sources.",
+      "description_markdown": "Searches OpenLibrary, Google Books, ISBNdb, Hardcover, Goodreads, Amazon, Anna's Archive, Project Gutenberg, BookBrainz, FantasticFiction, ISFDB, LibraryThing, Internet Archive, WorldCat, and Douban. Results include book identity, descriptions, contributors, and artwork.",
+      "setup_markdown": "Install the plugin and add **Ebook Metadata** to an ebook library's metadata provider chain. Optionally limit `enabled_sources`, set a regional hint, or add API keys for Google Books, ISBNdb, and Hardcover. Sources that require a key are skipped until one is configured.",
+      "homepage_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "NOASSERTION"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-darwin-arm64",
+      "checksum": "a676210d45a484647e4255be3b22e132ff9f6c11d62782029c9c81e2ceb6ff6b"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-freebsd-amd64",
+      "checksum": "e64e9bd32e4d518ce70901aed6bbd563879cc2c17c5f29377abd8bb36a9e04eb"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-freebsd-arm64",
+      "checksum": "baa9ca1dcacc523acf004815e5edf7cf1b7a0bb7a0ce6134a898c2454305014b"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-linux-amd64",
+      "checksum": "3ba1f0b936d7d9b6ef5f96a8b4a5a698869ff3bd6f9255ca02eff3e6d255b0be"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-linux-arm64",
+      "checksum": "34711daf95853a2c398a0aa93e77742f0a0609ab54aa044ebf211caeadacf472"
+    }
+  },
+  "tag": "v0.1.4",
+  "source_commit": "2478c2827dd393aef320eb5f502f3ce6d612cd46"
+}

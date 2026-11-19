@@ -1,0 +1,111 @@
+{
+  "manifest": {
+    "plugin_id": "silo.sportarr",
+    "version": "1.0.5",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "metadata_provider.v1",
+        "id": "sportarr",
+        "display_name": "Sportarr",
+        "description": "Sportarr — metadata for sports leagues as TV shows.",
+        "metadata": {
+          "default_enabled": false,
+          "default_priority": {
+            "episode": 50,
+            "season": 50,
+            "series": 50
+          }
+        }
+      }
+    ],
+    "global_config_schema": [
+      {
+        "key": "sportarr",
+        "title": "Sportarr",
+        "description": "Configure Sportarr API access",
+        "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\"},\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+        "admin_form": {
+          "fields": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "description": "Sportarr instance URL. Defaults to https://sportarr.net if left empty.",
+              "control": 1,
+              "placeholder": "https://sportarr.net"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "description": "API key for protected image endpoints on a self-hosted Sportarr instance.",
+              "control": 3,
+              "secret": true
+            }
+          ]
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "Sportarr Metadata",
+      "summary": "Build sports libraries from Sportarr league, season, and event metadata.",
+      "description_markdown": "Maps Sportarr leagues to series, seasons to seasons, and events to episodes so sports libraries behave like familiar TV libraries in Silo. The provider is installed disabled by default so administrators can opt in where it fits their library layout.",
+      "setup_markdown": "Install the plugin, configure the Sportarr base URL if you do not use `https://sportarr.net`, and add the instance API key when its protected image API is enabled. Then enable **Sportarr Metadata** in the metadata provider chain for the relevant sports library.",
+      "homepage_url": "https://sportarr.net",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
+      "support_url": "https://github.com/Silo-Server/silo-server/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-or-later"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-darwin-arm64",
+      "checksum": "349572da2ed38b707ea7c08e7ee09440b39ba859df8cf9960d56549096e39b83"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-amd64",
+      "checksum": "558f2a3e41879087b0c7ed3234190abb6d7f6fbc37b2cbbf169efa5b75775060"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-arm64",
+      "checksum": "152d58158a11f1c2672afc8c0e51e6069270d55331ccdb2c4be5bfcc0a67c886"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-amd64",
+      "checksum": "ff934fc2a2a3ec04cae906263cc89f521ddce719dfa3eb47882f9924ed868e78"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-arm64",
+      "checksum": "87b41b4c5d02c4e0ffa4c2131f99adb5b5a5bd487883b621832c91fd00eedf3d"
+    }
+  },
+  "tag": "v1.0.5",
+  "source_commit": "5d29dd1d8c5e9f84af919984f4f3217275fa8bb8"
+}

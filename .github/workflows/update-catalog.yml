@@ -74,11 +74,11 @@ jobs:
             git fetch --quiet origin main
             git reset --quiet --hard FETCH_HEAD
             go run ./cmd/update-catalog "${args[@]}"
-            if git diff --quiet -- manifest.json; then
+            git add -- manifest.json releases
+            if git diff --cached --quiet -- manifest.json releases; then
               echo "The catalog already lists ${PLUGIN_REPO}@${PLUGIN_TAG}."
               exit 0
             fi
-            git add manifest.json
             git commit --quiet -m "chore: update catalog for ${PLUGIN_REPO}@${PLUGIN_TAG}"
             if git push origin HEAD:main; then
               exit 0

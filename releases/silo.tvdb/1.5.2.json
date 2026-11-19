@@ -1,0 +1,96 @@
+{
+  "manifest": {
+    "plugin_id": "silo.tvdb",
+    "version": "1.5.2",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "amd64"
+      },
+      {
+        "os": "freebsd",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "metadata_provider.v1",
+        "id": "tvdb",
+        "display_name": "TVDB",
+        "description": "TheTVDB — metadata for TV series.",
+        "metadata": {
+          "default_priority": {
+            "episode": 2,
+            "season": 2,
+            "series": 2
+          }
+        }
+      },
+      {
+        "type": "image_resolver.v1",
+        "id": "tvdb",
+        "display_name": "TVDB Images",
+        "description": "Resolves tvdb:// image paths to TheTVDB image URLs.",
+        "metadata": {
+          "priority": 100,
+          "schemes": [
+            "tvdb"
+          ]
+        }
+      }
+    ],
+    "presentation": {
+      "display_name": "TVDB Metadata",
+      "summary": "Fetch series, season, episode, and artwork metadata from TheTVDB.",
+      "description_markdown": "Provides television metadata for series, seasons, and episodes, plus image resolution for TVDB artwork stored by Silo. It complements other providers when a library relies on TVDB identities or ordering.",
+      "setup_markdown": "TVDB Metadata is installed as a default Silo plugin. Add or enable **TVDB** in a television library's metadata provider chain; no plugin-specific configuration is required.",
+      "homepage_url": "https://thetvdb.com",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases",
+      "publisher_name": "Silo",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-or-later"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-darwin-arm64",
+      "checksum": "f0a8ae9c13fe64d35eb20682aee73c8f28404b945f12cefae91eb1ad5ab0b52d"
+    },
+    "freebsd/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-freebsd-amd64",
+      "checksum": "73c5e7df745364555792793e83d6b0a85a345a2cb7bf7692c3bcf287f1b7c346"
+    },
+    "freebsd/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-freebsd-arm64",
+      "checksum": "1e7b846bd824da83c9131b6f02a35ac1855a8e682af7d582c4f57904740dee22"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-linux-amd64",
+      "checksum": "b955c41b59e2be7275eab5860271c70511e21a1141b80e30f1496c342a776fe6"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-linux-arm64",
+      "checksum": "79b59106b03900871688f6ae95623dec47072e4c3107215b4169c060e4a10b8f"
+    }
+  },
+  "tag": "v1.5.2",
+  "source_commit": "ef3fdb9d94b3bec24564e2810e285be6c63b0021"
+}

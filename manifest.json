@@ -149,21 +149,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-darwin-arm64",
+          "checksum": "1b880d9732644a47b668913e9cbe0aa0acaf4252554e9857ebcb1cae5220b09e"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-freebsd-amd64",
+          "checksum": "e12fa72b399121bb165c58d948a4875093ed91fedfb7899a3dafa9280e3087c8"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-freebsd-arm64",
+          "checksum": "03c35252283adeb10b0b9322ebe85029576ddd0654b30f8a707f39ff05a3e69b"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-linux-amd64",
+          "checksum": "2286c1c9936f72b08d6453e987853726e5dc11412d29c0bf97d61f2657b85e81"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.11/plugin-linux-arm64",
+          "checksum": "7a325721c89a96e1f47406ad59d543e9eae00145d759675837d9a9fd7b1684a6"
         }
-      }
+      },
+      "tag": "v0.1.11",
+      "source_commit": "081d0d08f7ec317d268fb935738755916e3584f5"
     },
     {
       "manifest": {
@@ -606,21 +613,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-darwin-arm64",
+          "checksum": "af0a7eb5bd26776bdf0be32651ee594f5fe6e44f08dc0eb8842bcf3a84e71c56"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-freebsd-amd64",
+          "checksum": "7eeb1cf9590f7e6a15f68c31e19ea674898e0c69a0bd8e9383194a0eed6aa250"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-freebsd-arm64",
+          "checksum": "0740f3c8c85c9aa8180ad39cdb2467ce3850c0c57b74afc305c425048a523802"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-linux-amd64",
+          "checksum": "92d08b5c5f5a28f971616bb8cb49a21615b19ed2c6c418f3e29672aad7115aed"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-ldap/releases/download/v0.1.2/plugin-linux-arm64",
+          "checksum": "906e698d58de8c8c0b9e846167c7cf8c1eaffcb18667ed646c206b298a15db64"
         }
-      }
+      },
+      "tag": "v0.1.2",
+      "source_commit": "a9fadabe1f5d5dc0c5d3dd591d145e864d02e651"
     },
     {
       "manifest": {
@@ -1026,21 +1040,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-darwin-arm64",
+          "checksum": "3afaca81b900150ff740a63df1d46b124fa3d7c034907f8d3506fb31752c9d7b"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-freebsd-amd64",
+          "checksum": "b768335414a462662ef60c205da6b3cfa8a1d2e5f4402ad23ba195265ac8ab50"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-freebsd-arm64",
+          "checksum": "bf0a7fa26427bf0deae7c896dba90dc90cb57a251b85cab836818d13a3210944"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-linux-amd64",
+          "checksum": "0d804813d6846667897ce08ae3d101e609b8bf4d1f9506babbfc32df5f360b36"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-auth-oidc/releases/download/v0.1.2/plugin-linux-arm64",
+          "checksum": "5da548651555410c5e4a447fba4345d4be16671cb915e4065e231e19a4f3b216"
         }
-      }
+      },
+      "tag": "v0.1.2",
+      "source_commit": "31e868db8793364521b519f9e1bc8af71f2ab506"
     },
     {
       "manifest": {
@@ -1096,21 +1117,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-darwin-arm64",
+          "checksum": "d2c82787b49748861cc50d11afe1d931d1a4c365a207890c62a48e0c5f3d78c2"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-freebsd-amd64",
+          "checksum": "51645d4b44fc0bc786a092d2ec65145bf74bf830144efe5b687a82e6f544de80"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-freebsd-arm64",
+          "checksum": "fe1f270b438b4e343c707e09d0713a6ab9aec7c33193804c6cc89d4ed9bce2c2"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-linux-amd64",
+          "checksum": "8356a6d0a2aa5c0eeeff0329df55f152870775c9182e92d02d0634ad9bd8a15e"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.4/plugin-linux-arm64",
+          "checksum": "96dce4c88d5c084d9f4cc5733b408d9e014ec40708b24c38961a23551135d89a"
         }
-      }
+      },
+      "tag": "v0.1.4",
+      "source_commit": "52c6a7fbdc320b29343b8b1af58d923fb90d7654"
     },
     {
       "manifest": {
@@ -1248,21 +1276,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-darwin-arm64",
+          "checksum": "a676210d45a484647e4255be3b22e132ff9f6c11d62782029c9c81e2ceb6ff6b"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-freebsd-amd64",
+          "checksum": "e64e9bd32e4d518ce70901aed6bbd563879cc2c17c5f29377abd8bb36a9e04eb"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-freebsd-arm64",
+          "checksum": "baa9ca1dcacc523acf004815e5edf7cf1b7a0bb7a0ce6134a898c2454305014b"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-linux-amd64",
+          "checksum": "3ba1f0b936d7d9b6ef5f96a8b4a5a698869ff3bd6f9255ca02eff3e6d255b0be"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.4/plugin-linux-arm64",
+          "checksum": "34711daf95853a2c398a0aa93e77742f0a0609ab54aa044ebf211caeadacf472"
         }
-      }
+      },
+      "tag": "v0.1.4",
+      "source_commit": "2478c2827dd393aef320eb5f502f3ce6d612cd46"
     },
     {
       "manifest": {
@@ -1402,21 +1437,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-darwin-arm64",
+          "checksum": "23c6a42162be6ff2f2a6d74dd4176e8f2386b8cd62ff6fa500af24d20793922c"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-amd64",
+          "checksum": "d11567ac44fe26105f3d224076aefa9c1ddd97e9a0814be3c032e459ce955ea4"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-freebsd-arm64",
+          "checksum": "b464b739a3ac29c4e8db5488be8a1f421da708f64cca13516734421e5ef43a93"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-amd64",
+          "checksum": "d280d38711eb913475d6de9cc6b57bffeccc6bf8b363e042240abe96de08084c"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.3/plugin-linux-arm64",
+          "checksum": "0775bf39d1768c58d9c9d7429dde35728cf3d35c78d44331ae124db8548fa4ce"
         }
-      }
+      },
+      "tag": "v0.1.3",
+      "source_commit": "4297926c41b78c9ada959ad71f93a37ba6657846"
     },
     {
       "manifest": {
@@ -1526,21 +1568,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-darwin-arm64",
+          "checksum": "85e712d2978cb0c5c4dc2a418a2ee9b132ef478423c8d8139c3c4e686592a8b1"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-freebsd-amd64",
+          "checksum": "364879bb7ebcdcf70b079c6396e11850962d1e13272e0fbea7c518ccfeade759"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-freebsd-arm64",
+          "checksum": "5a4ef8cb59e7a19b7990ca42f0b7eeb03118fda748bb4db8d64bd16107c725ca"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-linux-amd64",
+          "checksum": "0b96960875193afd99868ca8c3365a4b8d84f591b8723ccaf13d7d25161e3ee6"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-mdblist/releases/download/v0.5.2/plugin-linux-arm64",
+          "checksum": "eea5e49581aa6bd179636a562b569a146541963ddc2bdc65f37b5db34cdb2ed2"
         }
-      }
+      },
+      "tag": "v0.5.2",
+      "source_commit": "f13f68e045e66a71ba7eda43668acdbeace3592d"
     },
     {
       "manifest": {
@@ -1630,21 +1679,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-darwin-arm64",
+          "checksum": "349572da2ed38b707ea7c08e7ee09440b39ba859df8cf9960d56549096e39b83"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-amd64",
+          "checksum": "558f2a3e41879087b0c7ed3234190abb6d7f6fbc37b2cbbf169efa5b75775060"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-freebsd-arm64",
+          "checksum": "152d58158a11f1c2672afc8c0e51e6069270d55331ccdb2c4be5bfcc0a67c886"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-amd64",
+          "checksum": "ff934fc2a2a3ec04cae906263cc89f521ddce719dfa3eb47882f9924ed868e78"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.5/plugin-linux-arm64",
+          "checksum": "87b41b4c5d02c4e0ffa4c2131f99adb5b5a5bd487883b621832c91fd00eedf3d"
         }
-      }
+      },
+      "tag": "v1.0.5",
+      "source_commit": "5d29dd1d8c5e9f84af919984f4f3217275fa8bb8"
     },
     {
       "manifest": {
@@ -1723,21 +1779,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-darwin-arm64",
+          "checksum": "1bc9f65609df52e3fdfa9a9b51f82f6a938a2777110dc9b28e4795dad20f6f71"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-freebsd-amd64",
+          "checksum": "c48e90d35953b78c19b9a10bbd09fa69064ac6d54aae194b15944125adbcdc7a"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-freebsd-arm64",
+          "checksum": "83afad8a6891b59df43dedc35efc5838e5e9108e9bbd415105cf85e47237b264"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-linux-amd64",
+          "checksum": "995c3cff368cf4e7770268f2799f31fca18493ad6a5af2ae15d080e5023f3573"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.2.3/plugin-linux-arm64",
+          "checksum": "f8ec45669a5eaaddc77d0fe4d45a0a1f1c723276eb7bfc3625a61b76e7e4ffbe"
         }
-      }
+      },
+      "tag": "v0.2.3",
+      "source_commit": "dfdec5b35fa342e882bb615532ec3081916234ee"
     },
     {
       "manifest": {
@@ -1813,21 +1876,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-darwin-arm64",
+          "checksum": "4d2729a7cb9e476e8527cee2ca0e87162675bddf409235234d6bd4f6b8b1d9a0"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-freebsd-amd64",
+          "checksum": "c2bd558ed4b4317a696a31b6396f43d22a029800659233e291a5a5163ea11aa0"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-freebsd-arm64",
+          "checksum": "b73ac9356606a1db11ce8ccf90ee3a2842018a927dd45be325574906f6675a92"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-linux-amd64",
+          "checksum": "6f84b80be8d16a40805c525debc8daf5a865162778e49128abd8f10c2bd7b1b0"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.31/plugin-linux-arm64",
+          "checksum": "ad781dc98bb7fce149ed37ca0643d1a855206a1bddf03556b274a3b747ba36ab"
         }
-      }
+      },
+      "tag": "v1.2.31",
+      "source_commit": "5c5a2c17ca5737abb0b2b42f421da742590972cc"
     },
     {
       "manifest": {
@@ -1902,21 +1972,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-darwin-arm64",
+          "checksum": "f0a8ae9c13fe64d35eb20682aee73c8f28404b945f12cefae91eb1ad5ab0b52d"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-freebsd-amd64",
+          "checksum": "73c5e7df745364555792793e83d6b0a85a345a2cb7bf7692c3bcf287f1b7c346"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-freebsd-arm64",
+          "checksum": "1e7b846bd824da83c9131b6f02a35ac1855a8e682af7d582c4f57904740dee22"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-linux-amd64",
+          "checksum": "b955c41b59e2be7275eab5860271c70511e21a1141b80e30f1496c342a776fe6"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.5.2/plugin-linux-arm64",
+          "checksum": "79b59106b03900871688f6ae95623dec47072e4c3107215b4169c060e4a10b8f"
         }
-      }
+      },
+      "tag": "v1.5.2",
+      "source_commit": "ef3fdb9d94b3bec24564e2810e285be6c63b0021"
     },
     {
       "manifest": {
@@ -2016,21 +2093,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-darwin-arm64",
+          "checksum": "4ca3118a05ada26da923fe90b6cc36f65c717d577015b82b4b9107d0720bb145"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-freebsd-amd64",
+          "checksum": "b0a873d0ec670565d781b36b72c673aac6fc6e03bbb1bb50b2f64a225b5b42e0"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-freebsd-arm64",
+          "checksum": "9d170655c717bad6543bb18467f425d8df891d3370b9a2fb435f1c1988dc5a52"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-linux-amd64",
+          "checksum": "7cd0d301df08f6f07904ca84ab1ee2551240b2d37d9aaeea413df2b7274d8bac"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.3/plugin-linux-arm64",
+          "checksum": "84d103d0a1639eab457422bc94684f85c4fa8fb3112fd24083dd567d3bd70b54"
         }
-      }
+      },
+      "tag": "v0.3.3",
+      "source_commit": "9ab8288625b74d3deb4c730efafdae5d56ebd47c"
     },
     {
       "manifest": {
@@ -2126,21 +2210,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-darwin-arm64",
+          "checksum": "b0a46bd598c9b8c28d60201282e4e02cc642e54130cc252ab3b97443c266c750"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-freebsd-amd64",
+          "checksum": "f18999217e8f69298dd4175761394be6efac470e147c0b286d14052551768294"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-freebsd-arm64",
+          "checksum": "ae8672cb7f5a3d2ba5d64cb6a256d19347548c8eada948562bf5f4e46730c948"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-linux-amd64",
+          "checksum": "fa80aa5bb2eabb6ed0e70c250531413a6bcc88509c445ad571f78b13393ee5d2"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-mdblist/releases/download/v0.3.2/plugin-linux-arm64",
+          "checksum": "d2f5f348a86c1160cd1fc9543817643b444ced98d0be23656090937ceacf67fe"
         }
-      }
+      },
+      "tag": "v0.3.2",
+      "source_commit": "b81f921150c6b71dc557a89700edb5d309572f15"
     },
     {
       "manifest": {
@@ -2263,21 +2354,28 @@
       "bundle_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin.sigstore.json",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-darwin-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-darwin-arm64",
+          "checksum": "1fc3743d0aa7d68495d6da81f19ffea0637a6095ce4217533d89b3d4817e90ca"
         },
         "freebsd/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-freebsd-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-freebsd-amd64",
+          "checksum": "e896d92eb6494f3f317e754af84e373a2531a58d94fdaa5faaa886b3bf6cd6d1"
         },
         "freebsd/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-freebsd-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-freebsd-arm64",
+          "checksum": "fbbc1be8e4ac24417e700090a7f09a6ddcceb19074b1a2703c0f53d71fb6a482"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-linux-amd64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-linux-amd64",
+          "checksum": "5740ff30a946a8b339058c0a543bb3492f5a597fcd8087934206c2da3b572cf8"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-linux-arm64"
+          "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-simkl/releases/download/v0.5.2/plugin-linux-arm64",
+          "checksum": "3e34116bf49f2826b3804959d036928c3dd11ffed72dd7cead3d62be6272e344"
         }
-      }
+      },
+      "tag": "v0.5.2",
+      "source_commit": "54677c93202ef0282f917da5e1c6d743e0b8facc"
     }
   ]
 }

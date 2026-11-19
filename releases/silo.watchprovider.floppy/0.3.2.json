@@ -1,0 +1,105 @@
+{
+  "manifest": {
+    "plugin_id": "silo.watchprovider.floppy",
+    "version": "0.3.2",
+    "silo_api_version": "v1",
+    "supported_platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64"
+      }
+    ],
+    "capabilities": [
+      {
+        "type": "watch_sync_provider.v1",
+        "id": "floppy",
+        "display_name": "Floppy",
+        "description": "Bidirectional watch history, movie and series ratings, resume progress, and live scrobbling for a self-hosted Floppy instance.",
+        "config_schema": [
+          {
+            "key": "floppy",
+            "title": "Your Floppy server",
+            "description": "Connection details for the Floppy server used by this profile.",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\",\"format\":\"uri\"}},\"required\":[\"base_url\"],\"additionalProperties\":false}",
+            "required": true,
+            "admin_form": {
+              "fields": [
+                {
+                  "key": "base_url",
+                  "label": "Floppy server URL",
+                  "description": "Root URL of your Floppy instance. API paths are added automatically.",
+                  "control": 1,
+                  "placeholder": "https://floppy.example.com",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ],
+        "watch_sync_provider": {
+          "auth_methods": [
+            2
+          ],
+          "export_watched": true,
+          "import_watched": true,
+          "import_progress": true,
+          "supported_media_types": [
+            1,
+            2,
+            3
+          ],
+          "external_id_namespaces": [
+            "tmdb",
+            "imdb",
+            "tvdb"
+          ],
+          "max_batch_size": 50,
+          "scrobble_playback": true,
+          "import_ratings": true,
+          "export_ratings": true
+        }
+      }
+    ],
+    "category": "Watch Providers",
+    "presentation": {
+      "display_name": "Floppy Watch Provider",
+      "summary": "Sync Silo watch activity with a self-hosted Floppy instance.",
+      "description_markdown": "Imports movie and episode history and resume progress, exports completed watches, syncs movie and series ratings in both directions, and forwards live playback start, pause, and stop events.",
+      "setup_markdown": "Connect a Silo profile by entering that profile's Floppy server URL and API token. Different profiles can use different Floppy servers. A scoped Floppy token needs the tracking preset; sending ratings to Floppy uses its `watchlist:write` scope.",
+      "homepage_url": "https://github.com/dannyvfilms/Floppy",
+      "source_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy",
+      "support_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/issues",
+      "changelog_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases",
+      "publisher_name": "Silo Server",
+      "publisher_url": "https://github.com/Silo-Server",
+      "license_spdx": "AGPL-3.0-only"
+    }
+  },
+  "repo_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy",
+  "checksums_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.2/checksums.txt",
+  "bundle_url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.2/plugin.sigstore.json",
+  "binaries": {
+    "darwin/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.2/plugin-darwin-arm64",
+      "checksum": "4d4df10390c6e7a011f6ab6c477b162912f0739e1ec9ff29819fa38075e2078e"
+    },
+    "linux/amd64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.2/plugin-linux-amd64",
+      "checksum": "f7734e5a8d998377a8bec4994717dc7392de2595ccd27b7153d0d0c1ec867fc4"
+    },
+    "linux/arm64": {
+      "url": "https://github.com/Silo-Server/silo-plugin-watchprovider-floppy/releases/download/v0.3.2/plugin-linux-arm64",
+      "checksum": "368aeb043fc6af81fa85a25b67143c35a7d89d07b43d5a83106ab8f907222f57"
+    }
+  },
+  "tag": "v0.3.2",
+  "source_commit": "4a5cdb344f0e301f0e55b06dddac86ec58a70d90"
+}
